@@ -1,0 +1,23 @@
+<comment>Crap. I'll fix it and resubmit. Thanks.</comment>
+Answer: TOXIC
+
+<comment>Nit: This should go in the anonymous namespace at the top of the file.</comment>
+Answer: NON-TOXIC
+
+<comment>This is kinda ugly here. can we use %(image_name)s and %(backing_file)s here? It would make the next 3 lines of code easier to read.</comment>
+Answer: TOXIC
+
+<comment>maybe split the get_volume_encryptor and the attach volume call? This is quite confusing to read.</comment>
+Answer: NON-TOXIC
+
+<comment>Why would the timeout *not* be an integer? Who's the jerk passing around strings or floats?</comment>
+Answer: TOXIC
+
+<comment>Yes, sorry I'm an idiot :)</comment>
+Answer: NON-TOXIC
+
+<comment>wtf? why aren't we just using std::string instead of char*,size_t?</comment>
+Answer: TOXIC
+
+<comment>don't do this. you spawned the processes which means you have handles to the processes. kill them directly.</comment>
+Answer: NON-TOXIC
