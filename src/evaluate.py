@@ -5,6 +5,7 @@ Reads:  one or more prediction CSVs (columns: id, fold, label, prob_toxic, pred,
         and for the seen/unseen split.
 Writes: <out>/<name>.csv               one row per prediction file, sorted by pooled F1
         <out>/<name>.tex               the same table in LaTeX (booktabs)
+        <out>/<name>_per_fold.csv      precision, recall, F1 and accuracy for every fold
         <out>/<name>_seen_unseen.csv   F1 on seen vs unseen comments (only for leaky files)
 
 All metrics are for the toxic class (label 1):
@@ -273,7 +274,7 @@ def main():
     args = parser.parse_args()
 
     subset_ids = pd.read_csv(args.subset)["id"] if args.subset else None
-    rows, seen_rows = [], []
+    rows, fold_rows, seen_rows = [], [], []
     for path in expand_paths(args.preds):
         try:
             preds = load_predictions(path)
@@ -286,6 +287,10 @@ def main():
             print(f"Warning: {path} covers {len(preds):,} of {len(load_folds(setting)):,} "
                   f"comments in the {setting} fold file")
         rows.append(summarize(preds))
+        folds = per_fold_scores(preds).rename_axis("fold").reset_index()
+        folds.insert(0, "system", preds["system"].iloc[0])
+        folds.insert(1, "setting", setting)
+        fold_rows.append(folds)
         if setting == "leaky":
             seen_rows += seen_unseen_scores(preds, load_folds(setting))
 
@@ -299,6 +304,13 @@ def main():
     show = table[["system", "setting", "n", "f1_mean", "f1_sd", "f1_pooled", "f1_ci_low",
                   "f1_ci_high", "precision_pooled", "recall_pooled", "ap"]]
     print(show.to_string(index=False, float_format="{:.3f}".format))
+
+    per_fold = pd.concat(fold_rows)
+    per_fold.round(4).to_csv(out / f"{args.name}_per_fold.csv", index=False)
+    written.append(out / f"{args.name}_per_fold.csv")
+    print("\nF1 per fold:")
+    print(per_fold.pivot(index=["system", "setting"], columns="fold", values="f1")
+          .to_string(float_format="{:.3f}".format))
 
     if seen_rows:
         seen_table = pd.DataFrame(seen_rows)

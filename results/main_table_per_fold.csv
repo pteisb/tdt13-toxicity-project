@@ -1,0 +1,11 @@
+system,setting,fold,precision,recall,f1,accuracy
+tfidf_lr,clean,0,0.7132,0.7714,0.7412,0.8963
+tfidf_lr,clean,1,0.762,0.776,0.7689,0.91
+tfidf_lr,clean,2,0.7555,0.7694,0.7624,0.9076
+tfidf_lr,clean,3,0.7351,0.8041,0.768,0.9064
+tfidf_lr,clean,4,0.7395,0.7939,0.7657,0.9064
+tfidf_lr,leaky,0,0.8112,0.8684,0.8388,0.9361
+tfidf_lr,leaky,1,0.8456,0.8737,0.8594,0.9453
+tfidf_lr,leaky,2,0.8424,0.8895,0.8653,0.9471
+tfidf_lr,leaky,3,0.8617,0.8961,0.8786,0.9527
+tfidf_lr,leaky,4,0.8466,0.8748,0.8605,0.9458
