@@ -1,0 +1,49 @@
+# Secrets. .env.example is the template and IS committed.
+.env
+.env.*
+!.env.example
+
+# Raw downloaded data (GPL-3.0, fetched by script). The fold files in data/ are committed.
+data/raw/*
+!data/raw/.gitkeep
+
+# Python environment and caches
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Model checkpoints and weights (never commit; often > 50 MB)
+checkpoint-*/
+checkpoints/
+outputs/
+runs/
+wandb/
+*.bin
+*.safetensors
+*.pt
+*.pth
+*.ckpt
+*.onnx
+
+# Archives and other large files
+*.zip
+*.tar
+*.tar.gz
+*.7z
+
+# Editor / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# LaTeX build files (if the report is compiled locally)
+*.aux
+*.log
+*.out
+*.synctex.gz
+*.fls
+*.fdb_latexmk
