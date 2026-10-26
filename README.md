@@ -39,6 +39,5 @@ analysis/            error analysis spreadsheets
 kaggle/              notebooks for GPU fine-tuning on Kaggle
 src/                 Python scripts, one per step, plus shared helpers
 tests/               pytest tests
-docs/decisions.md    log of design decisions and why they were made
 report/              figures and tables exported for the report
 ```
