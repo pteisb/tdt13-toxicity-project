@@ -1,0 +1,11 @@
+model,fold,threshold
+original,0,0.0578
+original,1,0.0606
+original,2,0.0601
+original,3,0.0601
+original,4,0.0612
+unbiased,0,0.2315
+unbiased,1,0.291
+unbiased,2,0.2121
+unbiased,3,0.3845
+unbiased,4,0.2323
