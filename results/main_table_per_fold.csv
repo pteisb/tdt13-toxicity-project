@@ -19,6 +19,11 @@ detoxify_unbiased,clean,1,0.522,0.6293,0.5706,0.8173
 detoxify_unbiased,clean,2,0.5017,0.6041,0.5481,0.8082
 detoxify_unbiased,clean,3,0.5336,0.5837,0.5575,0.8215
 detoxify_unbiased,clean,4,0.528,0.5959,0.5599,0.8196
+roberta_base,clean,0,0.834,0.8204,0.8272,0.934
+roberta_base,clean,1,0.8643,0.8432,0.8536,0.9442
+roberta_base,clean,2,0.8502,0.8224,0.8361,0.9379
+roberta_base,clean,3,0.8303,0.8388,0.8345,0.9359
+roberta_base,clean,4,0.8303,0.8388,0.8345,0.9359
 tfidf_lr,clean,0,0.7132,0.7714,0.7412,0.8963
 tfidf_lr,clean,1,0.762,0.776,0.7689,0.91
 tfidf_lr,clean,2,0.7555,0.7694,0.7624,0.9076

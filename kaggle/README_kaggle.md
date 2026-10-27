@@ -152,8 +152,9 @@ may need extra packages, so try it only after runs 1-8 are done.
 
 Rough run times (estimates; check the first real run): one run trains 7 models (3 for the learning-rate
 search on fold 0, then folds 1-4), so the whole run takes about 7 times the minutes of the first
-`fold 0, lr ...` line in the log. Expect roughly 1 hour for base models and 3-4 hours for large models;
-all runs together should take about 12-15 GPU hours. The smoke-test time is not a good guide (it includes
+`fold 0, lr ...` line in the log. roberta-base took 34 minutes (about 4.6 minutes per training run), so expect
+about 35-45 minutes for base models and roughly 2-3 hours for large models; all runs together should take
+about 8-12 GPU hours. The smoke-test time is not a good guide (it includes
 the model download and uses only 500 comments). The weekly GPU quota (at least 30 hours) resets on Saturdays.
 
 ---
