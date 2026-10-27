@@ -4,8 +4,7 @@
 !.env.example
 
 # Raw downloaded data (GPL-3.0, fetched by script). The fold files in data/ are committed.
-data/raw/*
-!data/raw/.gitkeep
+data/raw/
 
 # Python environment and caches
 .venv/
