@@ -20,6 +20,8 @@ checkpoints/
 outputs/
 runs/
 wandb/
+# Output of the Kaggle notebook when it is run locally
+local_output/
 *.bin
 *.safetensors
 *.pt
