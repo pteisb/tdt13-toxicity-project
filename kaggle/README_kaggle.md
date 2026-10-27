@@ -10,7 +10,8 @@ What the notebook does in one run:
 2. Trains all 5 folds with that learning rate, keeps the best of up to 4 epochs (by validation F1),
    and predicts each held-out fold. Fold 0 reuses the model already trained during step 1.
 3. Writes `preds/<RUN_NAME>_<setting>.csv` after every fold and `logs/<RUN_NAME>_<setting>.json`.
-   Model weights are deleted after each fold; only these two files are kept as output.
+   Model weights are never saved to disk (the best epoch is kept in memory); only these two files are
+   kept as output.
 
 ---
 
