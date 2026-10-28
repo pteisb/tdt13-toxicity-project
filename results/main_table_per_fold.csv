@@ -14,6 +14,11 @@ codebert_base,clean,1,0.8723,0.8208,0.8458,0.9422
 codebert_base,clean,2,0.8631,0.798,0.8293,0.9367
 codebert_base,clean,3,0.8105,0.8469,0.8283,0.9324
 codebert_base,clean,4,0.8035,0.8429,0.8227,0.93
+deberta_v3_base,clean,0,0.8235,0.8571,0.84,0.9371
+deberta_v3_base,clean,1,0.8916,0.8045,0.8458,0.9434
+deberta_v3_base,clean,2,0.8294,0.8633,0.846,0.9395
+deberta_v3_base,clean,3,0.835,0.8469,0.8409,0.9383
+deberta_v3_base,clean,4,0.8288,0.8694,0.8486,0.9403
 detoxify_original_cal,clean,0,0.4914,0.6429,0.557,0.8031
 detoxify_original_cal,clean,1,0.5053,0.6802,0.5799,0.8098
 detoxify_original_cal,clean,2,0.5221,0.698,0.5974,0.8188
