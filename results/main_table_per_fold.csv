@@ -9,6 +9,11 @@ bert_base,leaky,1,0.8935,0.8816,0.8876,0.9573
 bert_base,leaky,2,0.8931,0.9121,0.9025,0.9623
 bert_base,leaky,3,0.8969,0.8921,0.8945,0.9598
 bert_base,leaky,4,0.8758,0.8921,0.8839,0.9552
+codebert_base,clean,0,0.7866,0.8122,0.7992,0.9214
+codebert_base,clean,1,0.8723,0.8208,0.8458,0.9422
+codebert_base,clean,2,0.8631,0.798,0.8293,0.9367
+codebert_base,clean,3,0.8105,0.8469,0.8283,0.9324
+codebert_base,clean,4,0.8035,0.8429,0.8227,0.93
 detoxify_original_cal,clean,0,0.4914,0.6429,0.557,0.8031
 detoxify_original_cal,clean,1,0.5053,0.6802,0.5799,0.8098
 detoxify_original_cal,clean,2,0.5221,0.698,0.5974,0.8188
