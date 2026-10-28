@@ -158,8 +158,8 @@ need extra packages, so try it only after the other runs.
 Rough run times (estimates; check the first real run): one run trains 7 models (3 for the learning-rate
 search on fold 0, then folds 1-4), so the whole run takes about 7 times the minutes of the first
 `fold 0, lr ...` line in the log. Measured: BERT/RoBERTa/CodeBERT about 4-4.5 minutes per training run
-(about 32 minutes per run), ModernBERT-base about 7 minutes (about 50 minutes per run). Large models should take
-roughly 2.5-3.5 hours; all runs together about 10-13 GPU hours. The smoke-test time is not a good guide (it includes
+(about 32 minutes per run), ModernBERT-base about 7 minutes (about 50 minutes per run). ModernBERT-large
+about 15 minutes (1 h 51 min per run); all runs together about 9-11 GPU hours. The smoke-test time is not a good guide (it includes
 the model download and uses only 500 comments). The weekly GPU quota (at least 30 hours) resets on Saturdays.
 
 ---
