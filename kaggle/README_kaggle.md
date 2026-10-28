@@ -144,12 +144,14 @@ version's output.
 | 6 | `answerdotai/ModernBERT-large` | `modernbert_large` | clean | `[1e-5, 2e-5, 3e-5]` | 16 / 2 |
 | 7 | `jhu-clsp/ettin-encoder-150m` | `ettin_150m` | clean | `[2e-5, 3e-5, 5e-5]` | 32 / 1 |
 | 8 | `jhu-clsp/ettin-encoder-400m` | `ettin_400m` | clean | `[1e-5, 2e-5, 3e-5]` | 16 / 2 |
-| 9 (optional) | `chandar-lab/NeoBERT` | `neobert` | clean | `[2e-5, 3e-5, 5e-5]` | 32 / 1 |
+| 9 | `microsoft/deberta-v3-base` | `deberta_v3_base` | clean | `[1e-5, 2e-5, 3e-5]` | 32 / 1 |
+| 10 (optional) | `chandar-lab/NeoBERT` | `neobert` | clean | `[2e-5, 3e-5, 5e-5]` | 32 / 1 |
 
 Leave `MAX_LEN = 256`, `MAX_EPOCHS = 4`, `FP16 = True` and `FOLDS_TO_RUN = [0, 1, 2, 3, 4]` unless a
 run fails (see below). For run 3, open `bert_base_clean.json` from run 2 and copy its `"chosen_lr"`
-value into `LR_GRID`, e.g. `LR_GRID = [3e-5]`. For run 9, set `TRUST_REMOTE_CODE = True`; NeoBERT
-may need extra packages, so try it only after runs 1-8 are done.
+value into `LR_GRID`, e.g. `LR_GRID = [3e-5]`. For run 9 (DeBERTa-v3), do a smoke test first: it is known to
+sometimes produce NaN losses with fp16, which the notebook detects (then set `FP16 = False`, about twice as slow).
+For run 10, set `TRUST_REMOTE_CODE = True`; NeoBERT may need extra packages, so try it only after the other runs.
 
 Rough run times (estimates; check the first real run): one run trains 7 models (3 for the learning-rate
 search on fold 0, then folds 1-4), so the whole run takes about 7 times the minutes of the first
@@ -170,6 +172,7 @@ the model download and uses only 500 comments). The weekly GPU quota (at least 3
 | `transformers ... is too old` | In the second code cell, remove the `#` before the `!pip install` line, run that cell, then **Restart Session** (Run menu) and Run All again. |
 | Errors while downloading the model (`Connection`, `HTTPError`, `401`) | Internet is off: Settings → Internet → On. Check the model id for typos. |
 | `Training loss became NaN/inf` | Set `FP16 = False` and run again (slower, but stable). |
+| `SentencePieceExtractor requires the protobuf library` or `tiktoken is required` (DeBERTa-v3) | Add a new code cell at the top with `!pip install -q protobuf sentencepiece`, run it, then **Restart Session** and Run All again. |
 | `CUDA out of memory` | Halve `BATCH_SIZE` and double `GRAD_ACCUM` (e.g. 32/1 → 16/2), so the effective batch stays the same. |
 | `validation F1 is 0 in every epoch` (real run, not smoke test) | The model learned nothing. Do not use the run; tell Claude Code and include the log. |
 | A run stopped half-way (timeout, crash) | The predictions file in the version's Output already contains the finished folds, and the log contains `"chosen_lr"`. Download both. Start a new version with `LR_GRID = [<chosen_lr>]` and `FOLDS_TO_RUN` = only the missing folds; then ask Claude Code to combine the two predictions files. |
