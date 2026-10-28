@@ -145,13 +145,15 @@ version's output.
 | 7 | `jhu-clsp/ettin-encoder-150m` | `ettin_150m` | clean | `[2e-5, 3e-5, 5e-5]` | 32 / 1 |
 | 8 | `jhu-clsp/ettin-encoder-400m` | `ettin_400m` | clean | `[1e-5, 2e-5, 3e-5]` | 16 / 2 |
 | 9 | `microsoft/deberta-v3-base` | `deberta_v3_base` | clean | `[1e-5, 2e-5, 3e-5]` | 32 / 1 |
-| 10 (optional) | `chandar-lab/NeoBERT` | `neobert` | clean | `[2e-5, 3e-5, 5e-5]` | 32 / 1 |
+| 10 (optional) | `microsoft/deberta-v3-large` | `deberta_v3_large` | clean | to be decided after run 9 | 16 / 2 |
+| 11 (optional) | `chandar-lab/NeoBERT` | `neobert` | clean | `[2e-5, 3e-5, 5e-5]` | 32 / 1 |
 
 Leave `MAX_LEN = 256`, `MAX_EPOCHS = 4`, `FP16 = True` and `FOLDS_TO_RUN = [0, 1, 2, 3, 4]` unless a
 run fails (see below). For run 3, open `bert_base_clean.json` from run 2 and copy its `"chosen_lr"`
 value into `LR_GRID`, e.g. `LR_GRID = [3e-5]`. For run 9 (DeBERTa-v3), do a smoke test first: it is known to
 sometimes produce NaN losses with fp16, which the notebook detects (then set `FP16 = False`, about twice as slow).
-For run 10, set `TRUST_REMOTE_CODE = True`; NeoBERT may need extra packages, so try it only after the other runs.
+Run 10 only if run 9 clearly beats the other encoders. For run 11, set `TRUST_REMOTE_CODE = True`; NeoBERT may
+need extra packages, so try it only after the other runs.
 
 Rough run times (estimates; check the first real run): one run trains 7 models (3 for the learning-rate
 search on fold 0, then folds 1-4), so the whole run takes about 7 times the minutes of the first

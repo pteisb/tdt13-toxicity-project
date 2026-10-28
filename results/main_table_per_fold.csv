@@ -34,6 +34,11 @@ detoxify_unbiased,clean,1,0.522,0.6293,0.5706,0.8173
 detoxify_unbiased,clean,2,0.5017,0.6041,0.5481,0.8082
 detoxify_unbiased,clean,3,0.5336,0.5837,0.5575,0.8215
 detoxify_unbiased,clean,4,0.528,0.5959,0.5599,0.8196
+ettin_150m,clean,0,0.8506,0.7551,0.8,0.9273
+ettin_150m,clean,1,0.8465,0.831,0.8386,0.9383
+ettin_150m,clean,2,0.8291,0.802,0.8154,0.93
+ettin_150m,clean,3,0.8167,0.8184,0.8175,0.9296
+ettin_150m,clean,4,0.8,0.8408,0.8199,0.9289
 modernbert_base,clean,0,0.8529,0.7571,0.8022,0.9281
 modernbert_base,clean,1,0.8545,0.8371,0.8457,0.9411
 modernbert_base,clean,2,0.8475,0.8163,0.8316,0.9363
