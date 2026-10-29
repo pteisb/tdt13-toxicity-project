@@ -59,11 +59,11 @@ modernbert_base,clean,1,0.8545,0.8371,0.8457,0.9411
 modernbert_base,clean,2,0.8475,0.8163,0.8316,0.9363
 modernbert_base,clean,3,0.8512,0.7939,0.8215,0.9336
 modernbert_base,clean,4,0.7973,0.8592,0.8271,0.9308
-modernbert_large,clean,0,0.832,0.8184,0.8251,0.9332
-modernbert_large,clean,1,0.7989,0.8982,0.8456,0.9367
-modernbert_large,clean,2,0.8613,0.849,0.8551,0.9446
-modernbert_large,clean,3,0.8316,0.8367,0.8342,0.9359
-modernbert_large,clean,4,0.8222,0.8306,0.8264,0.9328
+modernbert_large,clean,0,0.8568,0.7571,0.8039,0.9289
+modernbert_large,clean,1,0.865,0.835,0.8497,0.943
+modernbert_large,clean,2,0.863,0.8224,0.8422,0.9406
+modernbert_large,clean,3,0.851,0.8041,0.8269,0.9351
+modernbert_large,clean,4,0.8473,0.8041,0.8251,0.9344
 neobert,clean,0,0.817,0.802,0.8095,0.9273
 neobert,clean,1,0.8358,0.8187,0.8272,0.934
 neobert,clean,2,0.8927,0.798,0.8427,0.9426
