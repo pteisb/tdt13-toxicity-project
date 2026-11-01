@@ -1,0 +1,95 @@
+id,label,message,A_pred,A_status,A_answer,A_tokens,B_pred,B_status,B_answer,B_tokens,C_pred,C_status,C_answer,C_tokens
+125,0,"../../extensions/browser/extension_prefs.cc:348:3: error: no matching function for call to 'MakeCheckOpValueString'
+  DCHECK_EQ(observer_list_.begin(), observer_list_.end());
+  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../../base/logging.h:939:31: note: expanded from macro 'DCHECK_EQ'
+#define DCHECK_EQ(val1, val2) DCHECK_OP(EQ, ==, val1, val2)
+                              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../../base/logging.h:911:29: note: expanded from macro 'DCHECK_OP'
+  EAT_STREAM_PARAMETERS << (::logging::MakeCheckOpValueString(      \
+etc
+etc
+etc (C++ template nonsense)",0,parsed,NON-TOXIC,50,0,parsed,NON-TOXIC,53,0,parsed,NON-TOXIC,61
+142,1,"I think this solution is braindead also, like the previous one. Can we try to ass the null.? Anyway, +2 because safe.",1,parsed,TOXIC,90,1,parsed,TOXIC,199,1,parsed,TOXIC,181
+373,0,"nit: indentation.
+ imo it's better to put all arguments on the new line:
+  ml2_db.add_network_segment(
+  self.ctx.session, network_id, segment, is_dynamic=is_seg_dynamic)
+ 
+ same on line 63",0,parsed,NON-TOXIC,74,0,parsed,NON-TOXIC,88,0,parsed,NON-TOXIC,80
+433,1,"OMG, this alias is terrible!",0,parsed,NON-TOXIC,92,1,parsed,TOXIC,147,1,parsed,TOXIC,247
+865,0,noqa is not needed here,0,parsed,NON-TOXIC,79,0,parsed,NON-TOXIC,71,0,parsed,NON-TOXIC,56
+972,0,There is already a section further up which describes common image properties. So this entire chunk of new docs should be moved further up,0,parsed,NON-TOXIC,72,0,parsed,NON-TOXIC,81,0,parsed,NON-TOXIC,63
+1153,0,needs /* global STATIC_URL */,0,parsed,NON-TOXIC,64,0,parsed,NON-TOXIC,64,0,parsed,NON-TOXIC,66
+1201,0,"Oh, thank goodness for this change. Yay for removing useless log messages.",0,parsed,NON-TOXIC,102,0,parsed,NON-TOXIC,69,1,parsed,TOXIC,356
+1392,0,add: cfg.temporal_layering_mode = VP9E_TEMPORAL_LAYERING_MODE_BYPASS;,0,parsed,NON-TOXIC,70,0,parsed,NON-TOXIC,74,0,parsed,NON-TOXIC,46
+2380,1,Yuck and a half. I need to start a petition to ban this mock decorator nonsense.,1,parsed,TOXIC,102,1,parsed,TOXIC,117,1,parsed,TOXIC,237
+2572,0,"nit: personally, I prefer ""fake"" than ""asdf"". But this is just my preference",0,parsed,NON-TOXIC,66,0,parsed,NON-TOXIC,77,0,parsed,NON-TOXIC,76
+3269,0,Curious as to why the caller is not also making use of a flat_set,0,parsed,NON-TOXIC,63,0,parsed,NON-TOXIC,74,0,parsed,NON-TOXIC,65
+4122,0,"No reason other than it was like ~5 lines less code (No need to unwarp grpc responses, b64 decode, etc).  As a dumb proxy, CBE isn't going away anyways.",0,parsed,NON-TOXIC,152,0,parsed,NON-TOXIC,81,1,parsed,TOXIC,163
+4204,0,&& !kArm32QuickCodeUseSoftFloat,0,parsed,NON-TOXIC,72,0,parsed,NON-TOXIC,76,0,parsed,NON-TOXIC,69
+4373,0,params = req.params,0,parsed,NON-TOXIC,47,0,parsed,NON-TOXIC,42,0,parsed,NON-TOXIC,56
+5235,0,White spaces should be removed,0,parsed,NON-TOXIC,42,0,parsed,NON-TOXIC,62,0,parsed,NON-TOXIC,54
+5899,0,"This listener it's already too big, so let's extract it.",0,parsed,NON-TOXIC,77,0,parsed,NON-TOXIC,69,0,parsed,NON-TOXIC,89
+6871,0,why get rid of this die? It seems good,0,parsed,NON-TOXIC,56,0,parsed,NON-TOXIC,68,0,parsed,NON-TOXIC,68
+6885,0,nit: I think that we can kill everything after the comma now.,0,parsed,NON-TOXIC,74,0,parsed,NON-TOXIC,86,0,parsed,NON-TOXIC,93
+6919,0,"I apparently have gone through this idea but no, base64 encoding is an internal implementation detail of SyncPrefs.
+
+Which, of course, makes the local variable above useless! Removed.",0,parsed,NON-TOXIC,96,0,parsed,NON-TOXIC,113,0,parsed,NON-TOXIC,105
+7271,0,"Using 'os.path' operations on URLs is bad form:  It assumes that the
+path separator is '/', which is the sort of monkey business that
+`os.path`exists to prevent.  Put another way:  A URL is _not_ a
+filesystem path, and can't reliably be manipulated as such.",0,parsed,NON-TOXIC,65,0,parsed,NON-TOXIC,128,0,parsed,NON-TOXIC,76
+7527,0,"useless, please remove it for now.",1,parsed,TOXIC,86,1,parsed,TOXIC,176,1,parsed,TOXIC,164
+7670,1,"hey look, we can set it with an envvar instead of writing crap to disk. what a good idea, right?",0,parsed,NON-TOXIC,124,1,parsed,TOXIC,139,1,parsed,TOXIC,101
+8059,0,vnic_type != portbindings.VNIC_NORMAL:,0,parsed,NON-TOXIC,60,0,parsed,NON-TOXIC,59,0,parsed,NON-TOXIC,61
+8238,1,provide verbose description of what the hell are you doing here,1,parsed,TOXIC,72,1,parsed,TOXIC,93,1,parsed,TOXIC,74
+8656,0,"ick, sure looks like configs that don't already set the bind_port are just going to get a KeyError? gross.
+ 
+ I was expecting something more along the lines of a logged warning that says in future swift releases the bind_port will be required.
+ 
+ Even if we can pull this off with out a warning/deprecation - we should at least get a better system exit than stack trace.",0,parsed,NON-TOXIC,150,0,parsed,NON-TOXIC,177,0,parsed,NON-TOXIC,245
+9860,1,"dumb copy paste, removed.",1,parsed,TOXIC,53,1,parsed,TOXIC,269,1,parsed,TOXIC,228
+10287,1,"God, who gave that class such an obnoxiously long name.  He should be lit on fire.",1,parsed,TOXIC,68,1,parsed,TOXIC,139,1,parsed,TOXIC,124
+10460,0,"Oh, I copied that ""clever hack"" from that build rule in libcore/JavaLibrary.mk that you deleted only a few weeks ago:
+
+https://android.googlesource.com/platform/libcore/+/3f1d7be%5E!/#F0
+
+If anyone can propose a better way of doing it, I'm all ears.",0,parsed,NON-TOXIC,153,0,parsed,NON-TOXIC,107,0,parsed,NON-TOXIC,106
+10528,0,"This should be
+ 
+  force = body.get('force', True)",0,parsed,NON-TOXIC,65,0,parsed,NON-TOXIC,64,0,parsed,NON-TOXIC,63
+10599,1,darn! I'm on it,0,parsed,NON-TOXIC,52,1,parsed,TOXIC,83,1,parsed,TOXIC,133
+11458,0,Remove redundant parentheses,0,parsed,NON-TOXIC,56,0,parsed,NON-TOXIC,53,0,parsed,NON-TOXIC,52
+12243,0,Is there anything we can test in common_js_unittest?,0,parsed,NON-TOXIC,52,0,parsed,NON-TOXIC,67,0,parsed,NON-TOXIC,60
+12269,0,"i mean:
+
+ $ find -iname '*brillo_emu*' | wc -l
+ 0
+ $ git grep -i 'brillo_emu' | wc -l
+ 0
+
+i'm not strongly against this, just noting an inconsistency",0,parsed,NON-TOXIC,108,0,parsed,NON-TOXIC,80,0,parsed,NON-TOXIC,123
+12279,1,"Damn! That's where I first had it. Yep, I agree, I'll move it back1",0,parsed,NON-TOXIC,78,1,parsed,TOXIC,114,1,parsed,TOXIC,105
+12301,0,"Let's use ""Implements"" for tracking purposes in launchpad; we may create another bp for the other phases if needed",0,parsed,NON-TOXIC,68,0,parsed,NON-TOXIC,80,0,parsed,NON-TOXIC,58
+13362,0,"I always hate it when the kernel breaks the user ABI, is this intentional / safe ?",0,parsed,NON-TOXIC,69,0,parsed,NON-TOXIC,73,0,parsed,NON-TOXIC,84
+13857,0,"It did not work because it manipulated a wrong LinkTarget object. The way to get the LinkTarget from a Library is $(call gb_Library_get_linktargetname,library). But it is cleaner this way...",0,parsed,NON-TOXIC,88,0,parsed,NON-TOXIC,103,0,parsed,NON-TOXIC,109
+14074,1,wait? no getrandom? bastards!,1,parsed,TOXIC,55,1,parsed,TOXIC,71,1,parsed,TOXIC,63
+15062,0,can kill this if we kill the delayed shutdown (see comment in cc file),0,parsed,NON-TOXIC,63,0,parsed,NON-TOXIC,76,0,parsed,NON-TOXIC,72
+15660,0,Correct hash: 7e3b7dc76c41f9042a7079eb07d071f744bbd87a,0,parsed,NON-TOXIC,73,0,parsed,NON-TOXIC,84,0,parsed,NON-TOXIC,88
+16163,0,SrcMap*,0,parsed,NON-TOXIC,52,0,parsed,NON-TOXIC,64,0,parsed,NON-TOXIC,59
+16730,0,keep these three lines as all method below them are to be removed in 1.0,0,parsed,NON-TOXIC,66,0,parsed,NON-TOXIC,75,0,parsed,NON-TOXIC,74
+16978,1,"VS chokes on single parens because it can't differentiate from a function declaration (damn you, C++!)",0,parsed,NON-TOXIC,143,1,parsed,TOXIC,126,1,parsed,TOXIC,119
+17719,0,Added the entry name first but in '. I felt putting it at the was really ugly.,0,parsed,NON-TOXIC,87,0,parsed,NON-TOXIC,90,1,parsed,TOXIC,168
+18397,0,"Wow... that is pretty terrible! I find it hard to believe that this was in here all these years. (Thankfully, I just copied the 2 << 9 from somewhere else, so I only need to be half deathly ashamed about this.)
+
+Please refactor this out into an extra patch since it's a generic fix (not directly related to MT8173).",0,parsed,NON-TOXIC,143,0,parsed,NON-TOXIC,211,0,parsed,NON-TOXIC,191
+18592,1,"ah, damn, sorry, you are right",0,parsed,NON-TOXIC,46,1,parsed,TOXIC,80,1,parsed,TOXIC,82
+19352,0,"oatlastword is supposed to be the end of the oat content. seems like that should move here, or we don't need oatbsslastword",0,parsed,NON-TOXIC,74,0,parsed,NON-TOXIC,88,0,parsed,NON-TOXIC,89
+19552,0,"I don't think goroutine is needed here.
+
+you can just simply read the data from Stdout of the subprocess.
+In case of timeout, the process should be killed (thanks to the goroutine in testexec.Cmd.Start()), and the input will be terminated.
+
+You can just returns the result.",0,parsed,NON-TOXIC,105,0,parsed,NON-TOXIC,102,0,parsed,NON-TOXIC,125
+19572,0,awesome!,0,parsed,NON-TOXIC,39,0,parsed,NON-TOXIC,53,0,parsed,NON-TOXIC,56
