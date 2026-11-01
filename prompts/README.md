@@ -37,5 +37,6 @@ hand: one example per category whose label clearly follows the rubric.
 
 ## Versioning
 
-A prompt file is never edited after a full LLM run has used it. Changes after that go into a new
+The `v1` prompts are frozen (1 Nov 2026), after a pilot on 50 comments from the few-shot pool with
+both models. A prompt file is never edited after a full LLM run has used it. Changes after that go into a new
 version (`B_v2.txt`, ...), and the raw responses and predictions carry the version in their names.
