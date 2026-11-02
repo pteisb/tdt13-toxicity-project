@@ -3,18 +3,23 @@
 Reads:  one or more prediction CSVs (columns: id, fold, label, prob_toxic, pred, system,
         setting) and the matching fold file in data/, used to validate ids, folds and labels
         and for the seen/unseen split.
-Writes: <out>/<name>.csv               one row per prediction file, sorted by pooled F1
+Writes: nothing by default (prints the tables). With --out:
+        <out>/<name>.csv               one row per prediction file, sorted by pooled F1
         <out>/<name>.tex               the same table in LaTeX (booktabs)
         <out>/<name>_per_fold.csv      precision, recall, F1 and accuracy for every fold
         <out>/<name>_seen_unseen.csv   F1 on seen vs unseen comments (only for leaky files)
+
+The final results package (all tables and figures) is built by src/make_results.py, which uses the
+functions in this file. This command line is for quick checks of individual prediction files.
 
 All metrics are for the toxic class (label 1):
   - precision, recall and F1 per fold, reported as mean and standard deviation over folds
   - precision, recall and F1 on all predictions pooled, with a 95% bootstrap CI for F1
   - accuracy, and average precision (AP) when prob_toxic is filled in
 
-Run:  uv run python src/evaluate.py --preds preds/*.csv --out results/
-      uv run python src/evaluate.py --preds preds/*.csv --subset data/llm_eval_ids.csv --name llm_subset_table
+Run:  uv run python src/evaluate.py --preds preds/roberta_base_clean.csv preds/tfidf_lr_clean.csv
+      uv run python src/evaluate.py --preds "preds/*_v1_clean.csv" --subset data/llm_eval_ids.csv
+      (add --out <folder> to also save the tables)
 """
 
 import argparse
@@ -31,7 +36,7 @@ from sklearn.metrics import (
     precision_recall_fscore_support,
 )
 
-from config import CLEAN_FOLDS, LEAKY_FOLDS, PRED_COLUMNS, RESULTS_DIR, SEED, SETTINGS
+from config import CLEAN_FOLDS, LEAKY_FOLDS, PRED_COLUMNS, SEED, SETTINGS
 
 FOLD_FILES = {"clean": CLEAN_FOLDS, "leaky": LEAKY_FOLDS}
 N_RESAMPLES = 2000
@@ -119,6 +124,20 @@ def f1_from_counts(y_true, y_pred):
     fn = np.sum((y_true == 1) & (y_pred == 0))
     denominator = 2 * tp + fp + fn
     return 2 * tp / denominator if denominator else 0.0
+
+
+def confusion_counts(y_true, y_pred):
+    """True/false positives and negatives, with toxic as the positive class."""
+    y_true, y_pred = np.asarray(y_true), np.asarray(y_pred)
+    return {"tp": int(np.sum((y_true == 1) & (y_pred == 1))), "fp": int(np.sum((y_true == 0) & (y_pred == 1))),
+            "fn": int(np.sum((y_true == 1) & (y_pred == 0))), "tn": int(np.sum((y_true == 0) & (y_pred == 0)))}
+
+
+def false_positive_rate(y_true, y_pred):
+    """Share of non-toxic comments predicted toxic, or NaN if there are no non-toxic comments."""
+    counts = confusion_counts(y_true, y_pred)
+    negatives = counts["fp"] + counts["tn"]
+    return counts["fp"] / negatives if negatives else float("nan")
 
 
 def per_fold_scores(preds):
@@ -268,7 +287,7 @@ def expand_paths(patterns):
 def main():
     parser = argparse.ArgumentParser(description="Compute metrics from prediction files.")
     parser.add_argument("--preds", nargs="+", required=True, help="prediction CSVs; globs allowed")
-    parser.add_argument("--out", default=str(RESULTS_DIR), help="output folder")
+    parser.add_argument("--out", help="folder to save the tables in (default: only print them)")
     parser.add_argument("--subset", help="CSV with an 'id' column: score only these ids")
     parser.add_argument("--name", default="main_table", help="base name of the output files")
     args = parser.parse_args()
@@ -294,31 +313,32 @@ def main():
         if setting == "leaky":
             seen_rows += seen_unseen_scores(preds, load_folds(setting))
 
-    out = Path(args.out)
-    out.mkdir(parents=True, exist_ok=True)
     table = pd.DataFrame(rows).sort_values("f1_pooled", ascending=False)
-    table.round(4).to_csv(out / f"{args.name}.csv", index=False)
-    (out / f"{args.name}.tex").write_text(to_latex(table), encoding="utf-8")
-    written = [out / f"{args.name}.csv", out / f"{args.name}.tex"]
-
     show = table[["system", "setting", "n", "f1_mean", "f1_sd", "f1_pooled", "f1_ci_low",
                   "f1_ci_high", "precision_pooled", "recall_pooled", "ap"]]
     print(show.to_string(index=False, float_format="{:.3f}".format))
 
     per_fold = pd.concat(fold_rows)
-    per_fold.round(4).to_csv(out / f"{args.name}_per_fold.csv", index=False)
-    written.append(out / f"{args.name}_per_fold.csv")
     print("\nF1 per fold:")
     print(per_fold.pivot(index=["system", "setting"], columns="fold", values="f1")
           .to_string(float_format="{:.3f}".format))
 
+    seen_table = pd.DataFrame(seen_rows)
     if seen_rows:
-        seen_table = pd.DataFrame(seen_rows)
-        seen_table.round(4).to_csv(out / f"{args.name}_seen_unseen.csv", index=False)
-        written.append(out / f"{args.name}_seen_unseen.csv")
         print("\nLeaky setting, seen vs unseen comments:")
         print(seen_table.to_string(index=False, float_format="{:.3f}".format))
 
+    if not args.out:
+        return
+    out = Path(args.out)
+    out.mkdir(parents=True, exist_ok=True)
+    written = [out / f"{args.name}.csv", out / f"{args.name}.tex", out / f"{args.name}_per_fold.csv"]
+    table.round(4).to_csv(written[0], index=False)
+    written[1].write_text(to_latex(table), encoding="utf-8")
+    per_fold.round(4).to_csv(written[2], index=False)
+    if seen_rows:
+        written.append(out / f"{args.name}_seen_unseen.csv")
+        seen_table.round(4).to_csv(written[-1], index=False)
     print("\nWrote " + "\n      ".join(str(p) for p in written))
 
 

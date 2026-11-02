@@ -1,0 +1,12 @@
+system,name,setting,lr_grid,val_f1_per_lr,chosen_lr,chosen_lr_at_grid_edge,best_epochs,batch,fp16,training_runs,minutes_per_run,transformers
+bert_base,BERT-base,clean,"2e-5, 3e-5, 5e-5",0.840 / 0.836 / 0.838,2e-5,True,"4, 3, 3, 4, 2",32 x 1,True,7,4.01,5.16.1
+roberta_base,RoBERTa-base,clean,"2e-5, 3e-5, 5e-5",0.828 / 0.827 / 0.838,5e-5,True,"3, 3, 3, 2, 4",32 x 1,True,7,4.564,5.16.1
+codebert_base,CodeBERT-base,clean,"2e-5, 3e-5, 5e-5",0.809 / 0.816 / 0.828,5e-5,True,"4, 4, 3, 2, 3",32 x 1,True,7,4.259,5.16.1
+deberta_v3_base,DeBERTa-v3-base,clean,"1e-5, 2e-5, 3e-5",0.821 / 0.832 / 0.842,3e-5,True,"3, 3, 4, 3, 3",32 x 1,True,7,7.325,5.16.1
+deberta_v3_large,DeBERTa-v3-large,clean,"5e-6, 1e-5, 2e-5",0.839 / 0.837 / 0.849,2e-5,True,"4, 4, 4, 3, 3",8 x 4,True,7,18.128,5.16.1
+modernbert_base,ModernBERT-base,clean,"2e-5, 3e-5, 5e-5",0.828 / 0.821 / 0.811,2e-5,True,"3, 4, 4, 2, 3",32 x 1,True,7,6.954,5.16.1
+modernbert_large,ModernBERT-large,clean,"1e-5, 2e-5, 3e-5",0.832 / 0.852 / 0.844,2e-5,False,"3, 4, 3, 3, 4",16 x 2,True,7,16.056,5.16.1
+ettin_150m,Ettin-150m,clean,"2e-5, 3e-5, 5e-5",0.822 / 0.821 / 0.813,2e-5,True,"3, 4, 4, 4, 3",32 x 1,True,7,7.076,5.16.1
+ettin_400m,Ettin-400m,clean,"1e-5, 2e-5, 3e-5",0.834 / 0.835 / 0.837,3e-5,True,"3, 4, 2, 4, 2",16 x 2,True,7,15.12,5.16.1
+neobert,NeoBERT,clean,"2e-5, 3e-5, 5e-5",0.833 / 0.839 / 0.848,5e-5,True,"4, 4, 4, 2, 3",32 x 1,True,7,10.058,5.16.1
+bert_base,BERT-base,leaky,2e-5,--,2e-5,False,"4, 4, 4, 3, 4",32 x 1,True,5,6.46,5.16.1

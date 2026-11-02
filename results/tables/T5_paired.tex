@@ -1,0 +1,33 @@
+% Paired bootstrap, 2,000 resamples, seed 42; intervals NOT adjusted for multiple comparisons; * = borderline, an interval end within 0.002 of 0
+\begin{tabular}{lllcrcc}
+\toprule
+RQ & A $-$ B & Comments & F1 A / B & Difference & 95\% CI & Excl.\ 0 \\
+\midrule
+RQ1 & BERT-base $-$ TF-IDF + LR & 12,722 clean & 0.834 / 0.761 & +0.072 & [+0.060, +0.085] & yes \\
+RQ1 & BERT-base $-$ TF-IDF + LR & 19,647 leaky & 0.893 / 0.860 & +0.032 & [+0.025, +0.040] & yes \\
+\midrule
+RQ2 & BERT-base $-$ Detoxify original, cal. & 12,722 clean & 0.834 / 0.581 & +0.253 & [+0.236, +0.270] & yes \\
+RQ2 & RoBERTa-base $-$ Detoxify unbiased, cal. & 12,722 clean & 0.837 / 0.562 & +0.275 & [+0.258, +0.290] & yes \\
+RQ2 & TF-IDF + LR $-$ Detoxify original, cal. & 12,722 clean & 0.761 / 0.581 & +0.180 & [+0.163, +0.198] & yes \\
+\midrule
+RQ3 & DeBERTa-v3-base $-$ TF-IDF + LR & 12,722 clean & 0.844 / 0.761 & +0.083 & [+0.071, +0.095] & yes \\
+RQ3 & RoBERTa-base $-$ CodeBERT-base & 12,722 clean & 0.837 / 0.825 & +0.012 & [+0.004, +0.021] & yes \\
+RQ3 & DeBERTa-v3-base $-$ NeoBERT & 12,722 clean & 0.844 / 0.831 & +0.013 & [+0.003, +0.022] & yes \\
+RQ3 & DeBERTa-v3-base $-$ ModernBERT-base & 12,722 clean & 0.844 / 0.826 & +0.018 & [+0.009, +0.028] & yes \\
+RQ3 & DeBERTa-v3-base $-$ Ettin-150m & 12,722 clean & 0.844 / 0.818 & +0.026 & [+0.015, +0.036] & yes \\
+RQ3 & ModernBERT-large $-$ ModernBERT-base & 12,722 clean & 0.830 / 0.826 & +0.004 & [$-$0.005, +0.013] & no \\
+RQ3 & Ettin-400m $-$ Ettin-150m & 12,722 clean & 0.835 / 0.818 & +0.017 & [+0.006, +0.027] & yes \\
+RQ3 & DeBERTa-v3-large $-$ DeBERTa-v3-base & 12,722 clean & 0.841 / 0.844 & $-$0.003 & [$-$0.011, +0.005] & no \\
+RQ3 & DeBERTa-v3-base $-$ Ettin-400m & 12,722 clean & 0.844 / 0.835 & +0.009 & [$-$0.000, +0.019] & no* \\
+\midrule
+RQ4 & gpt-oss-120b B $-$ gpt-oss-120b A & 2,000 subset & 0.677 / 0.358 & +0.319 & [+0.268, +0.371] & yes \\
+RQ4 & gpt-oss-120b C $-$ gpt-oss-120b B & 2,000 subset & 0.735 / 0.677 & +0.058 & [+0.026, +0.089] & yes \\
+RQ4 & Kimi-K2.6 B $-$ Kimi-K2.6 A & 2,000 subset & 0.599 / 0.144 & +0.455 & [+0.399, +0.510] & yes \\
+RQ4 & Kimi-K2.6 C $-$ Kimi-K2.6 B & 2,000 subset & 0.722 / 0.599 & +0.123 & [+0.084, +0.161] & yes \\
+RQ4 & gpt-oss-120b A $-$ Kimi-K2.6 A & 2,000 subset & 0.358 / 0.144 & +0.215 & [+0.165, +0.262] & yes \\
+RQ4 & gpt-oss-120b B $-$ Kimi-K2.6 B & 2,000 subset & 0.677 / 0.599 & +0.078 & [+0.039, +0.118] & yes \\
+RQ4 & gpt-oss-120b C $-$ Kimi-K2.6 C & 2,000 subset & 0.735 / 0.722 & +0.013 & [$-$0.021, +0.049] & no \\
+RQ4 & DeBERTa-v3-base $-$ gpt-oss-120b C & 2,000 subset & 0.837 / 0.735 & +0.102 & [+0.066, +0.139] & yes \\
+RQ4 & TF-IDF + LR $-$ gpt-oss-120b C & 2,000 subset & 0.777 / 0.735 & +0.042 & [+0.000, +0.082] & yes* \\
+\bottomrule
+\end{tabular}

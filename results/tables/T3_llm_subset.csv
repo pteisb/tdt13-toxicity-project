@@ -1,0 +1,22 @@
+system,name,family,year,params,setting,n,n_folds,precision_mean,precision_sd,recall_mean,recall_sd,f1_mean,f1_sd,precision_pooled,recall_pooled,f1_pooled,f1_ci_low,f1_ci_high,accuracy,ap
+tfidf_lr,TF-IDF + LR,Baseline,,,clean,2000,5,0.75,0.043,0.804,0.056,0.776,0.043,0.751,0.805,0.777,0.744,0.806,0.911,0.851
+detoxify_original_cal,"Detoxify original, cal.",Off-the-shelf,2020.0,110M,clean,2000,5,0.542,0.052,0.693,0.032,0.608,0.043,0.542,0.694,0.608,0.569,0.646,0.828,0.626
+detoxify_unbiased_cal,"Detoxify unbiased, cal.",Off-the-shelf,2021.0,125M,clean,2000,5,0.47,0.059,0.694,0.07,0.557,0.037,0.466,0.694,0.557,0.519,0.595,0.788,0.552
+detoxify_unbiased,Detoxify unbiased,Off-the-shelf,2021.0,125M,clean,2000,5,0.5,0.066,0.595,0.061,0.542,0.057,0.5,0.597,0.544,0.503,0.583,0.808,0.552
+detoxify_original,Detoxify original,Off-the-shelf,2020.0,110M,clean,2000,5,0.726,0.031,0.35,0.064,0.469,0.061,0.724,0.348,0.47,0.419,0.52,0.849,0.626
+bert_base,BERT-base,Classic encoders,2018.0,110M,clean,2000,5,0.835,0.04,0.874,0.039,0.854,0.032,0.834,0.875,0.854,0.827,0.879,0.942,0.915
+deberta_v3_base,DeBERTa-v3-base,Classic encoders,2021.0,184M,clean,2000,5,0.823,0.035,0.852,0.027,0.836,0.016,0.822,0.852,0.837,0.807,0.864,0.936,0.92
+deberta_v3_large,DeBERTa-v3-large,Classic encoders,2021.0,435M,clean,2000,5,0.823,0.035,0.849,0.027,0.835,0.016,0.822,0.849,0.835,0.806,0.863,0.936,0.917
+roberta_base,RoBERTa-base,Classic encoders,2019.0,125M,clean,2000,5,0.833,0.023,0.831,0.05,0.832,0.03,0.833,0.831,0.832,0.802,0.86,0.936,0.909
+codebert_base,CodeBERT-base,Classic encoders,2020.0,125M,clean,2000,5,0.812,0.045,0.824,0.044,0.817,0.033,0.811,0.823,0.817,0.787,0.845,0.929,0.903
+neobert,NeoBERT,Modern encoders,2025.0,250M,clean,2000,5,0.848,0.055,0.84,0.073,0.841,0.021,0.843,0.839,0.841,0.814,0.868,0.939,0.911
+modernbert_large,ModernBERT-large,Modern encoders,2024.0,395M,clean,2000,5,0.854,0.018,0.812,0.049,0.832,0.03,0.855,0.813,0.834,0.803,0.862,0.938,0.916
+ettin_400m,Ettin-400m,Modern encoders,2025.0,400M,clean,2000,5,0.834,0.067,0.831,0.06,0.83,0.032,0.831,0.829,0.83,0.799,0.856,0.934,0.892
+ettin_150m,Ettin-150m,Modern encoders,2025.0,150M,clean,2000,5,0.827,0.053,0.819,0.057,0.821,0.035,0.826,0.816,0.821,0.791,0.85,0.932,0.901
+modernbert_base,ModernBERT-base,Modern encoders,2024.0,149M,clean,2000,5,0.85,0.052,0.792,0.068,0.818,0.044,0.849,0.79,0.818,0.787,0.847,0.932,0.904
+gptoss120b_C_v1,gpt-oss-120b C,Prompted LLMs,2025.0,117B,clean,2000,5,0.72,0.031,0.755,0.059,0.735,0.02,0.718,0.753,0.735,0.7,0.77,0.896,
+kimik26_C_v1,Kimi-K2.6 C,Prompted LLMs,2026.0,~1T,clean,2000,5,0.744,0.052,0.704,0.034,0.722,0.025,0.74,0.704,0.722,0.682,0.758,0.896,
+gptoss120b_B_v1,gpt-oss-120b B,Prompted LLMs,2025.0,117B,clean,2000,5,0.767,0.054,0.609,0.036,0.678,0.026,0.765,0.608,0.677,0.636,0.716,0.888,
+kimik26_B_v1,Kimi-K2.6 B,Prompted LLMs,2026.0,~1T,clean,2000,5,0.831,0.039,0.466,0.05,0.596,0.047,0.833,0.468,0.599,0.552,0.646,0.88,
+gptoss120b_A_v1,gpt-oss-120b A,Prompted LLMs,2025.0,117B,clean,2000,5,0.54,0.089,0.266,0.048,0.356,0.061,0.542,0.268,0.358,0.308,0.406,0.816,
+kimik26_A_v1,Kimi-K2.6 A,Prompted LLMs,2026.0,~1T,clean,2000,5,0.644,0.089,0.08,0.026,0.141,0.044,0.66,0.081,0.144,0.1,0.191,0.815,

@@ -1,0 +1,16 @@
+system,name,family,year,params,setting,n,n_folds,precision_mean,precision_sd,recall_mean,recall_sd,f1_mean,f1_sd,precision_pooled,recall_pooled,f1_pooled,f1_ci_low,f1_ci_high,accuracy,ap
+tfidf_lr,TF-IDF + LR,Baseline,,,clean,12722,5,0.741,0.019,0.783,0.015,0.761,0.012,0.741,0.783,0.761,0.748,0.774,0.905,0.836
+detoxify_original_cal,"Detoxify original, cal.",Off-the-shelf,2020.0,110M,clean,12722,5,0.514,0.019,0.669,0.026,0.581,0.019,0.513,0.669,0.581,0.565,0.596,0.814,0.609
+detoxify_unbiased_cal,"Detoxify unbiased, cal.",Off-the-shelf,2021.0,125M,clean,12722,5,0.472,0.027,0.699,0.037,0.563,0.014,0.47,0.699,0.562,0.547,0.576,0.79,0.527
+detoxify_unbiased,Detoxify unbiased,Off-the-shelf,2021.0,125M,clean,12722,5,0.514,0.02,0.597,0.022,0.552,0.017,0.514,0.597,0.552,0.537,0.568,0.814,0.527
+detoxify_original,Detoxify original,Off-the-shelf,2020.0,110M,clean,12722,5,0.673,0.03,0.347,0.028,0.457,0.028,0.672,0.347,0.458,0.438,0.477,0.842,0.609
+deberta_v3_base,DeBERTa-v3-base,Classic encoders,2021.0,184M,clean,12722,5,0.842,0.028,0.848,0.026,0.844,0.004,0.84,0.848,0.844,0.834,0.855,0.94,0.915
+deberta_v3_large,DeBERTa-v3-large,Classic encoders,2021.0,435M,clean,12722,5,0.838,0.026,0.845,0.013,0.841,0.01,0.837,0.845,0.841,0.83,0.852,0.939,0.919
+roberta_base,RoBERTa-base,Classic encoders,2019.0,125M,clean,12722,5,0.842,0.015,0.833,0.01,0.837,0.01,0.842,0.833,0.837,0.826,0.848,0.938,0.906
+bert_base,BERT-base,Classic encoders,2018.0,110M,clean,12722,5,0.838,0.029,0.83,0.011,0.834,0.012,0.837,0.83,0.834,0.822,0.845,0.936,0.904
+codebert_base,CodeBERT-base,Classic encoders,2020.0,125M,clean,12722,5,0.827,0.038,0.824,0.021,0.825,0.017,0.826,0.824,0.825,0.814,0.836,0.933,0.9
+ettin_400m,Ettin-400m,Modern encoders,2025.0,400M,clean,12722,5,0.857,0.033,0.817,0.038,0.835,0.014,0.855,0.817,0.835,0.824,0.847,0.938,0.895
+neobert,NeoBERT,Modern encoders,2025.0,250M,clean,12722,5,0.855,0.031,0.81,0.017,0.832,0.014,0.854,0.81,0.831,0.82,0.843,0.937,0.899
+modernbert_large,ModernBERT-large,Modern encoders,2024.0,395M,clean,12722,5,0.857,0.008,0.805,0.03,0.83,0.018,0.857,0.805,0.83,0.818,0.841,0.936,0.913
+modernbert_base,ModernBERT-base,Modern encoders,2024.0,149M,clean,12722,5,0.841,0.024,0.813,0.039,0.826,0.016,0.839,0.813,0.826,0.814,0.837,0.934,0.903
+ettin_150m,Ettin-150m,Modern encoders,2025.0,150M,clean,12722,5,0.829,0.021,0.809,0.034,0.818,0.014,0.828,0.809,0.818,0.807,0.83,0.931,0.903

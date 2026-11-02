@@ -1,0 +1,24 @@
+rq,a,b,name_a,name_b,comment_set,n,f1_a,f1_b,f1_diff,ci_low,ci_high,excludes_zero,borderline
+RQ1,bert_base,tfidf_lr,BERT-base,TF-IDF + LR,clean,12722,0.834,0.761,0.072,0.06,0.085,True,False
+RQ1,bert_base,tfidf_lr,BERT-base,TF-IDF + LR,leaky,19647,0.893,0.86,0.032,0.025,0.04,True,False
+RQ2,bert_base,detoxify_original_cal,BERT-base,"Detoxify original, cal.",clean,12722,0.834,0.581,0.253,0.236,0.27,True,False
+RQ2,roberta_base,detoxify_unbiased_cal,RoBERTa-base,"Detoxify unbiased, cal.",clean,12722,0.837,0.562,0.275,0.258,0.29,True,False
+RQ2,tfidf_lr,detoxify_original_cal,TF-IDF + LR,"Detoxify original, cal.",clean,12722,0.761,0.581,0.18,0.163,0.198,True,False
+RQ3,deberta_v3_base,tfidf_lr,DeBERTa-v3-base,TF-IDF + LR,clean,12722,0.844,0.761,0.083,0.071,0.095,True,False
+RQ3,roberta_base,codebert_base,RoBERTa-base,CodeBERT-base,clean,12722,0.837,0.825,0.012,0.004,0.021,True,False
+RQ3,deberta_v3_base,neobert,DeBERTa-v3-base,NeoBERT,clean,12722,0.844,0.831,0.013,0.003,0.022,True,False
+RQ3,deberta_v3_base,modernbert_base,DeBERTa-v3-base,ModernBERT-base,clean,12722,0.844,0.826,0.018,0.009,0.028,True,False
+RQ3,deberta_v3_base,ettin_150m,DeBERTa-v3-base,Ettin-150m,clean,12722,0.844,0.818,0.026,0.015,0.036,True,False
+RQ3,modernbert_large,modernbert_base,ModernBERT-large,ModernBERT-base,clean,12722,0.83,0.826,0.004,-0.005,0.013,False,False
+RQ3,ettin_400m,ettin_150m,Ettin-400m,Ettin-150m,clean,12722,0.835,0.818,0.017,0.006,0.027,True,False
+RQ3,deberta_v3_large,deberta_v3_base,DeBERTa-v3-large,DeBERTa-v3-base,clean,12722,0.841,0.844,-0.003,-0.011,0.005,False,False
+RQ3,deberta_v3_base,ettin_400m,DeBERTa-v3-base,Ettin-400m,clean,12722,0.844,0.835,0.009,-0.0,0.019,False,True
+RQ4,gptoss120b_B_v1,gptoss120b_A_v1,gpt-oss-120b B,gpt-oss-120b A,subset,2000,0.677,0.358,0.319,0.268,0.371,True,False
+RQ4,gptoss120b_C_v1,gptoss120b_B_v1,gpt-oss-120b C,gpt-oss-120b B,subset,2000,0.735,0.677,0.058,0.026,0.089,True,False
+RQ4,kimik26_B_v1,kimik26_A_v1,Kimi-K2.6 B,Kimi-K2.6 A,subset,2000,0.599,0.144,0.455,0.399,0.51,True,False
+RQ4,kimik26_C_v1,kimik26_B_v1,Kimi-K2.6 C,Kimi-K2.6 B,subset,2000,0.722,0.599,0.123,0.084,0.161,True,False
+RQ4,gptoss120b_A_v1,kimik26_A_v1,gpt-oss-120b A,Kimi-K2.6 A,subset,2000,0.358,0.144,0.215,0.165,0.262,True,False
+RQ4,gptoss120b_B_v1,kimik26_B_v1,gpt-oss-120b B,Kimi-K2.6 B,subset,2000,0.677,0.599,0.078,0.039,0.118,True,False
+RQ4,gptoss120b_C_v1,kimik26_C_v1,gpt-oss-120b C,Kimi-K2.6 C,subset,2000,0.735,0.722,0.013,-0.021,0.049,False,False
+RQ4,deberta_v3_base,gptoss120b_C_v1,DeBERTa-v3-base,gpt-oss-120b C,subset,2000,0.837,0.735,0.102,0.066,0.139,True,False
+RQ4,tfidf_lr,gptoss120b_C_v1,TF-IDF + LR,gpt-oss-120b C,subset,2000,0.777,0.735,0.042,0.0,0.082,True,True

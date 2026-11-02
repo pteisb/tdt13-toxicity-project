@@ -1,0 +1,15 @@
+\begin{tabular}{llrccc}
+\toprule
+System & Comments & $n$ & Precision & Recall & F1 [95\% CI] \\
+\midrule
+TF-IDF + LR & Clean & 12,722 & 0.741 & 0.783 & 0.761 [0.748, 0.774] \\
+TF-IDF + LR & Leaky, all & 19,647 & 0.841 & 0.880 & 0.860 [0.852, 0.869] \\
+TF-IDF + LR & Leaky, seen & 10,713 & 0.933 & 0.978 & 0.955 [0.949, 0.961] \\
+TF-IDF + LR & Leaky, unseen & 8,934 & 0.734 & 0.767 & 0.751 [0.735, 0.766] \\
+\midrule
+BERT-base & Clean & 12,722 & 0.837 & 0.830 & 0.834 [0.822, 0.845] \\
+BERT-base & Leaky, all & 19,647 & 0.893 & 0.892 & 0.893 [0.885, 0.900] \\
+BERT-base & Leaky, seen & 10,713 & 0.951 & 0.962 & 0.957 [0.951, 0.963] \\
+BERT-base & Leaky, unseen & 8,934 & 0.824 & 0.812 & 0.818 [0.804, 0.831] \\
+\bottomrule
+\end{tabular}

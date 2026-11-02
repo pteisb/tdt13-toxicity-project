@@ -1,0 +1,17 @@
+\begin{tabular}{lllllcr}
+\toprule
+Model & LR grid & Val.\ F1 per LR (fold 0) & Chosen & Best epoch per fold & Batch & Min/run \\
+\midrule
+BERT-base & 2e-5, 3e-5, 5e-5 & 0.840 / 0.836 / 0.838 & 2e-5 & 4, 3, 3, 4, 2 & 32 $\times$ 1 & 4.0 \\
+RoBERTa-base & 2e-5, 3e-5, 5e-5 & 0.828 / 0.827 / 0.838 & 5e-5 & 3, 3, 3, 2, 4 & 32 $\times$ 1 & 4.6 \\
+CodeBERT-base & 2e-5, 3e-5, 5e-5 & 0.809 / 0.816 / 0.828 & 5e-5 & 4, 4, 3, 2, 3 & 32 $\times$ 1 & 4.3 \\
+DeBERTa-v3-base & 1e-5, 2e-5, 3e-5 & 0.821 / 0.832 / 0.842 & 3e-5 & 3, 3, 4, 3, 3 & 32 $\times$ 1 & 7.3 \\
+DeBERTa-v3-large & 5e-6, 1e-5, 2e-5 & 0.839 / 0.837 / 0.849 & 2e-5 & 4, 4, 4, 3, 3 & 8 $\times$ 4 & 18.1 \\
+ModernBERT-base & 2e-5, 3e-5, 5e-5 & 0.828 / 0.821 / 0.811 & 2e-5 & 3, 4, 4, 2, 3 & 32 $\times$ 1 & 7.0 \\
+ModernBERT-large & 1e-5, 2e-5, 3e-5 & 0.832 / 0.852 / 0.844 & 2e-5 & 3, 4, 3, 3, 4 & 16 $\times$ 2 & 16.1 \\
+Ettin-150m & 2e-5, 3e-5, 5e-5 & 0.822 / 0.821 / 0.813 & 2e-5 & 3, 4, 4, 4, 3 & 32 $\times$ 1 & 7.1 \\
+Ettin-400m & 1e-5, 2e-5, 3e-5 & 0.834 / 0.835 / 0.837 & 3e-5 & 3, 4, 2, 4, 2 & 16 $\times$ 2 & 15.1 \\
+NeoBERT & 2e-5, 3e-5, 5e-5 & 0.833 / 0.839 / 0.848 & 5e-5 & 4, 4, 4, 2, 3 & 32 $\times$ 1 & 10.1 \\
+BERT-base (leaky) & 2e-5 & -- & 2e-5 & 4, 4, 4, 3, 4 & 32 $\times$ 1 & 6.5 \\
+\bottomrule
+\end{tabular}

@@ -59,6 +59,14 @@ def test_handmade_example():
     assert scores["accuracy"] == pytest.approx(3 / 5)
 
 
+def test_confusion_counts_and_false_positive_rate():
+    # same handmade example: 2 TP, 1 FP, 1 FN, 1 TN
+    assert evaluate.confusion_counts([1, 1, 1, 0, 0], [1, 1, 0, 1, 0]) == {"tp": 2, "fp": 1, "fn": 1, "tn": 1}
+    assert evaluate.false_positive_rate([1, 1, 1, 0, 0], [1, 1, 0, 1, 0]) == pytest.approx(0.5)
+    assert evaluate.false_positive_rate([0, 0, 0, 0], [0, 0, 0, 1]) == pytest.approx(0.25)
+    assert np.isnan(evaluate.false_positive_rate([1, 1], [0, 1]))     # no non-toxic comments
+
+
 def test_fast_f1_matches_sklearn():
     rng = np.random.default_rng(0)
     for _ in range(20):

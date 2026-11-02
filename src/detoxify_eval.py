@@ -136,7 +136,7 @@ def main():
     written.append(THRESHOLDS_FILE)
 
     print("\nWrote " + "\n      ".join(str(p) for p in written))
-    print("Metrics: uv run python src/evaluate.py --preds preds/*.csv --out results/")
+    print("Metrics: uv run python src/make_results.py")
 
 
 if __name__ == "__main__":

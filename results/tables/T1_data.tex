@@ -1,0 +1,11 @@
+% Conflicting texts removed: 60 texts (187 rows); leaky test comments with a copy in training: 54.5%
+\begin{tabular}{lrrr}
+\toprule
+Data & Comments & Toxic & Share \\
+\midrule
+Raw file & 19,651 & 3,757 & 19.1\% \\
+Without empty messages (leaky setting) & 19,647 & 3,757 & 19.1\% \\
+Deduplicated, conflicts removed (clean setting) & 12,722 & 2,451 & 19.3\% \\
+LLM evaluation subset (from clean) & 2,000 & 385 & 19.2\% \\
+\bottomrule
+\end{tabular}

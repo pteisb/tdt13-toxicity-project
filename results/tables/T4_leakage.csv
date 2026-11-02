@@ -1,0 +1,9 @@
+system,name,setting,group,n,toxic,precision,recall,f1,f1_ci_low,f1_ci_high
+tfidf_lr,TF-IDF + LR,clean,all,12722,2451,0.741,0.783,0.761,0.748,0.774
+tfidf_lr,TF-IDF + LR,leaky,all,19647,3757,0.841,0.88,0.86,0.852,0.869
+tfidf_lr,TF-IDF + LR,leaky,seen,10713,2016,0.933,0.978,0.955,0.949,0.961
+tfidf_lr,TF-IDF + LR,leaky,unseen,8934,1741,0.734,0.767,0.751,0.735,0.766
+bert_base,BERT-base,clean,all,12722,2451,0.837,0.83,0.834,0.822,0.845
+bert_base,BERT-base,leaky,all,19647,3757,0.893,0.892,0.893,0.885,0.9
+bert_base,BERT-base,leaky,seen,10713,2016,0.951,0.962,0.957,0.951,0.963
+bert_base,BERT-base,leaky,unseen,8934,1741,0.824,0.812,0.818,0.804,0.831

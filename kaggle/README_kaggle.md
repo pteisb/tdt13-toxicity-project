@@ -120,11 +120,13 @@ Smoke-test files are named `..._SMOKE_...`. You do not need to download them; ne
 2. Download the two files (or "Download All" as a zip):
    - `preds/<RUN_NAME>_<setting>.csv` → put it in the repository's `preds/` folder.
    - `logs/<RUN_NAME>_<setting>.json` → put it in the repository's `results/kaggle_logs/` folder.
-3. Then compute the metrics locally:
+3. Then check and score the new file locally (this only prints, it writes nothing):
    ```
-   uv run python src/evaluate.py --preds "preds/*.csv" --out results/
+   uv run python src/evaluate.py --preds preds/<RUN_NAME>_<setting>.csv
    ```
    `evaluate.py` checks the file against the fold file (all ids, folds and labels) before scoring it.
+   To rebuild all result tables and figures with the new run included, add it to the system list in
+   `src/make_results.py` and run `uv run python src/make_results.py`.
 
 Command-line alternative (Kaggle CLI already set up):
 `kaggle kernels output <your-username>/<notebook-slug> -p <download-folder>` downloads the latest
@@ -145,21 +147,23 @@ version's output.
 | 7 | `jhu-clsp/ettin-encoder-150m` | `ettin_150m` | clean | `[2e-5, 3e-5, 5e-5]` | 32 / 1 |
 | 8 | `jhu-clsp/ettin-encoder-400m` | `ettin_400m` | clean | `[1e-5, 2e-5, 3e-5]` | 16 / 2 |
 | 9 | `microsoft/deberta-v3-base` | `deberta_v3_base` | clean | `[1e-5, 2e-5, 3e-5]` | 32 / 1 |
-| 10 (optional) | `microsoft/deberta-v3-large` | `deberta_v3_large` | clean | to be decided after run 9 | 16 / 2 |
-| 11 (optional) | `chandar-lab/NeoBERT` | `neobert` | clean | `[2e-5, 3e-5, 5e-5]` | 32 / 1 |
+| 10 | `microsoft/deberta-v3-large` | `deberta_v3_large` | clean | `[5e-6, 1e-5, 2e-5]` | **8 / 4** (16 / 2 runs out of memory) |
+| 11 | `chandar-lab/NeoBERT` | `neobert` | clean | `[2e-5, 3e-5, 5e-5]` | 32 / 1, `TRUST_REMOTE_CODE = True` |
+
+All 11 runs were done with these settings; the results in `results/` come from them.
 
 Leave `MAX_LEN = 256`, `MAX_EPOCHS = 4`, `FP16 = True` and `FOLDS_TO_RUN = [0, 1, 2, 3, 4]` unless a
 run fails (see below). For run 3, open `bert_base_clean.json` from run 2 and copy its `"chosen_lr"`
 value into `LR_GRID`, e.g. `LR_GRID = [3e-5]`. For run 9 (DeBERTa-v3), do a smoke test first: it is known to
 sometimes produce NaN losses with fp16, which the notebook detects (then set `FP16 = False`, about twice as slow).
-Run 10 only if run 9 clearly beats the other encoders. For run 11, set `TRUST_REMOTE_CODE = True`; NeoBERT may
-need extra packages, so try it only after the other runs.
+For run 11 (NeoBERT), set `TRUST_REMOTE_CODE = True`. The notebook pins NeoBERT's code to a checked version and
+works around two incompatibilities with transformers 5 (see the comments in its model-settings cell).
 
 Rough run times (estimates; check the first real run): one run trains 7 models (3 for the learning-rate
 search on fold 0, then folds 1-4), so the whole run takes about 7 times the minutes of the first
-`fold 0, lr ...` line in the log. Measured: BERT/RoBERTa/CodeBERT about 4-4.5 minutes per training run
-(about 32 minutes per run), ModernBERT-base about 7 minutes (about 50 minutes per run). ModernBERT-large
-about 15 minutes (1 h 51 min per run); all runs together about 9-11 GPU hours. The smoke-test time is not a good guide (it includes
+`fold 0, lr ...` line in the log. Measured minutes per training run (the full table is
+`results/tables/T7_encoder_runs.csv`): BERT, RoBERTa, CodeBERT 4-4.6; ModernBERT-base, Ettin-150m, DeBERTa-v3-base 7-7.3;
+NeoBERT 10; Ettin-400m, ModernBERT-large 15-16; DeBERTa-v3-large 18. The smoke-test time is not a good guide (it includes
 the model download and uses only 500 comments). The weekly GPU quota (at least 30 hours) resets on Saturdays.
 
 ---

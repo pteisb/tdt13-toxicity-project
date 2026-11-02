@@ -1,0 +1,12 @@
+% 2,000-comment subset; toxic is the positive class; best system chosen on all clean comments (LLMs: on the subset)
+\begin{tabular}{llrrrr}
+\toprule
+Family & Best system & TP & FP & FN & TN \\
+\midrule
+Baseline & TF-IDF + LR & 310 & 103 & 75 & 1512 \\
+Off-the-shelf & Detoxify original, cal. & 267 & 226 & 118 & 1389 \\
+Classic encoders & DeBERTa-v3-base & 328 & 71 & 57 & 1544 \\
+Modern encoders & Ettin-400m & 319 & 65 & 66 & 1550 \\
+Prompted LLMs & gpt-oss-120b C & 290 & 114 & 95 & 1501 \\
+\bottomrule
+\end{tabular}

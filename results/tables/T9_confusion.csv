@@ -1,0 +1,6 @@
+family,system,name,tp,fp,fn,tn
+Baseline,tfidf_lr,TF-IDF + LR,310,103,75,1512
+Off-the-shelf,detoxify_original_cal,"Detoxify original, cal.",267,226,118,1389
+Classic encoders,deberta_v3_base,DeBERTa-v3-base,328,71,57,1544
+Modern encoders,ettin_400m,Ettin-400m,319,65,66,1550
+Prompted LLMs,gptoss120b_C_v1,gpt-oss-120b C,290,114,95,1501

@@ -1,0 +1,7 @@
+system,name,ids,parsed,unparsed,refused,retries,failed_requests,http_retries,latency_mean_s,latency_median_s,latency_max_s,completion_tokens_mean,reasoning_chars_mean,first_request,wall_clock_h
+gptoss120b_A_v1,gpt-oss-120b A,2000,2000,0,0,0,0,0,2.563,2.627,5.489,81.888,280.948,2026-11-01T14:56:31,0.356
+gptoss120b_B_v1,gpt-oss-120b B,2000,2000,0,0,0,0,1,2.267,2.169,8.881,98.092,352.951,2026-11-01T14:29:41,0.315
+gptoss120b_C_v1,gpt-oss-120b C,2000,2000,0,0,0,0,0,3.028,2.843,8.799,106.51,386.076,2026-11-01T15:25:01,0.421
+kimik26_A_v1,Kimi-K2.6 A,2000,2000,0,0,0,0,12,9.34,7.07,300.687,239.184,1039.604,2026-11-01T17:25:01,1.323
+kimik26_B_v1,Kimi-K2.6 B,2000,2000,0,0,0,0,12,20.504,11.378,293.065,430.758,1809.493,2026-11-01T14:31:25,2.889
+kimik26_C_v1,Kimi-K2.6 C,2000,2000,0,0,0,0,7,34.424,18.795,298.746,682.256,2776.856,2026-11-01T18:44:31,4.928
