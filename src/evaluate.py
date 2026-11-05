@@ -33,6 +33,7 @@ import pandas as pd
 from sklearn.metrics import (
     accuracy_score,
     average_precision_score,
+    cohen_kappa_score,
     precision_recall_fscore_support,
 )
 
@@ -138,6 +139,14 @@ def false_positive_rate(y_true, y_pred):
     counts = confusion_counts(y_true, y_pred)
     negatives = counts["fp"] + counts["tn"]
     return counts["fp"] / negatives if negatives else float("nan")
+
+
+def coding_agreement(first, second):
+    """Agreement between two codings of the same items (e.g. error categories): the share coded the same,
+    and Cohen's kappa, which corrects that share for the agreement expected by chance."""
+    first, second = list(first), list(second)
+    return {"n": len(first), "agreement": float(np.mean([a == b for a, b in zip(first, second)])),
+            "cohen_kappa": float(cohen_kappa_score(first, second))}
 
 
 def per_fold_scores(preds):

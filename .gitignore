@@ -40,6 +40,8 @@ local_output/
 .DS_Store
 Thumbs.db
 desktop.ini
+# Lock files Excel creates while a workbook is open
+~$*
 
 # LaTeX build files (if the report is compiled locally)
 *.aux

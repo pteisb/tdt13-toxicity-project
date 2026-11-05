@@ -1,0 +1,43 @@
+system,name,error_type,category,n,count,share,toxicr_bert_share
+deberta_v3_base,DeBERTa-v3-base,FP,General error,50,15,0.3,0.45
+deberta_v3_base,DeBERTa-v3-base,FP,SE domain word,50,4,0.08,0.4
+deberta_v3_base,DeBERTa-v3-base,FP,Self-deprecation,50,7,0.14,0.13
+deberta_v3_base,DeBERTa-v3-base,FP,Bad acronym,50,0,0.0,0.02
+deberta_v3_base,DeBERTa-v3-base,FP,Confounding context,50,17,0.34,0.003
+deberta_v3_base,DeBERTa-v3-base,FP,Definition mismatch,50,0,0.0,
+deberta_v3_base,DeBERTa-v3-base,FP,Questionable label,50,7,0.14,
+deberta_v3_base,DeBERTa-v3-base,FN,General error,50,6,0.12,0.46
+deberta_v3_base,DeBERTa-v3-base,FN,SE domain word,50,1,0.02,0.43
+deberta_v3_base,DeBERTa-v3-base,FN,Self-deprecation,50,0,0.0,0.11
+deberta_v3_base,DeBERTa-v3-base,FN,Bad acronym,50,0,0.0,
+deberta_v3_base,DeBERTa-v3-base,FN,Confounding context,50,1,0.02,0.01
+deberta_v3_base,DeBERTa-v3-base,FN,Definition mismatch,50,15,0.3,
+deberta_v3_base,DeBERTa-v3-base,FN,Questionable label,50,27,0.54,
+detoxify_original_cal,"Detoxify original, cal.",FP,General error,25,6,0.24,0.45
+detoxify_original_cal,"Detoxify original, cal.",FP,SE domain word,25,14,0.56,0.4
+detoxify_original_cal,"Detoxify original, cal.",FP,Self-deprecation,25,3,0.12,0.13
+detoxify_original_cal,"Detoxify original, cal.",FP,Bad acronym,25,0,0.0,0.02
+detoxify_original_cal,"Detoxify original, cal.",FP,Confounding context,25,1,0.04,0.003
+detoxify_original_cal,"Detoxify original, cal.",FP,Definition mismatch,25,0,0.0,
+detoxify_original_cal,"Detoxify original, cal.",FP,Questionable label,25,1,0.04,
+detoxify_original_cal,"Detoxify original, cal.",FN,General error,25,0,0.0,0.46
+detoxify_original_cal,"Detoxify original, cal.",FN,SE domain word,25,0,0.0,0.43
+detoxify_original_cal,"Detoxify original, cal.",FN,Self-deprecation,25,1,0.04,0.11
+detoxify_original_cal,"Detoxify original, cal.",FN,Bad acronym,25,0,0.0,
+detoxify_original_cal,"Detoxify original, cal.",FN,Confounding context,25,2,0.08,0.01
+detoxify_original_cal,"Detoxify original, cal.",FN,Definition mismatch,25,19,0.76,
+detoxify_original_cal,"Detoxify original, cal.",FN,Questionable label,25,3,0.12,
+gptoss120b_C_v1,gpt-oss-120b C,FP,General error,25,10,0.4,0.45
+gptoss120b_C_v1,gpt-oss-120b C,FP,SE domain word,25,4,0.16,0.4
+gptoss120b_C_v1,gpt-oss-120b C,FP,Self-deprecation,25,2,0.08,0.13
+gptoss120b_C_v1,gpt-oss-120b C,FP,Bad acronym,25,0,0.0,0.02
+gptoss120b_C_v1,gpt-oss-120b C,FP,Confounding context,25,5,0.2,0.003
+gptoss120b_C_v1,gpt-oss-120b C,FP,Definition mismatch,25,0,0.0,
+gptoss120b_C_v1,gpt-oss-120b C,FP,Questionable label,25,4,0.16,
+gptoss120b_C_v1,gpt-oss-120b C,FN,General error,25,0,0.0,0.46
+gptoss120b_C_v1,gpt-oss-120b C,FN,SE domain word,25,0,0.0,0.43
+gptoss120b_C_v1,gpt-oss-120b C,FN,Self-deprecation,25,1,0.04,0.11
+gptoss120b_C_v1,gpt-oss-120b C,FN,Bad acronym,25,0,0.0,
+gptoss120b_C_v1,gpt-oss-120b C,FN,Confounding context,25,1,0.04,0.01
+gptoss120b_C_v1,gpt-oss-120b C,FN,Definition mismatch,25,11,0.44,
+gptoss120b_C_v1,gpt-oss-120b C,FN,Questionable label,25,12,0.48,

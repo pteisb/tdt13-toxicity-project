@@ -1,0 +1,16 @@
+% Share of each system's sampled errors (2,000-comment subset) per category; GE = General error, SE = SE domain word, SD = Self-deprecation, BA = Bad acronym, CC = Confounding context, DM = Definition mismatch, QL = Questionable label. ToxiCR: BERT on the original data, Sarker et al. (2023) Section 5.6; -- = not given
+\begin{tabular}{lrrrrrrr}
+\toprule
+Errors ($n$) & GE & SE & SD & BA & CC & DM & QL \\
+\midrule
+DeBERTa-v3-base, FP (50) & 30\% & 8\% & 14\% & 0\% & 34\% & 0\% & 14\% \\
+DeBERTa-v3-base, FN (50) & 12\% & 2\% & 0\% & 0\% & 2\% & 30\% & 54\% \\
+Detoxify original, cal., FP (25) & 24\% & 56\% & 12\% & 0\% & 4\% & 0\% & 4\% \\
+Detoxify original, cal., FN (25) & 0\% & 0\% & 4\% & 0\% & 8\% & 76\% & 12\% \\
+gpt-oss-120b C, FP (25) & 40\% & 16\% & 8\% & 0\% & 20\% & 0\% & 16\% \\
+gpt-oss-120b C, FN (25) & 0\% & 0\% & 4\% & 0\% & 4\% & 44\% & 48\% \\
+\midrule
+ToxiCR BERT, FP (373) & 45\% & 40\% & 13\% & 2\% & 0.3\% & -- & -- \\
+ToxiCR BERT, FN (483) & 46\% & 43\% & 11\% & -- & 1\% & -- & -- \\
+\bottomrule
+\end{tabular}

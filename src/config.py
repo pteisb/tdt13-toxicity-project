@@ -35,3 +35,10 @@ NON_TOXIC = 0
 # prob_toxic may be empty for LLMs; setting is "clean" or "leaky".
 PRED_COLUMNS = ["id", "fold", "label", "prob_toxic", "pred", "system", "setting"]
 SETTINGS = ["clean", "leaky"]
+
+# Error analysis: the hand-coding workbook, the recode workbook, and the categories an error can get.
+# The first five are the categories of ToxiCR's own error analysis; the last two are new in this project.
+ERROR_CODING = ANALYSIS_DIR / "error_analysis.xlsx"
+ERROR_RECODE = ANALYSIS_DIR / "error_recode.xlsx"
+ERROR_CATEGORIES = ["General error", "SE domain word", "Self-deprecation", "Bad acronym", "Confounding context",
+                    "Definition mismatch", "Questionable label"]

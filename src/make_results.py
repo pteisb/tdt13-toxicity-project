@@ -7,7 +7,7 @@ results/llm_pilot/) are never read.
 
 Reads:  preds/<system>_<setting>.csv, data/clean_folds.csv, data/leaky_folds.csv, data/llm_eval_ids.csv,
         results/data_stats.csv, results/detoxify_thresholds.csv, results/kaggle_logs/*.json,
-        results/llm_run_stats.csv
+        results/llm_run_stats.csv, analysis/error_analysis.xlsx and analysis/error_recode.xlsx (if present)
 Writes: results/tables/T1_data.csv/.tex           dataset statistics, raw vs clean
         results/tables/T2_main_clean.csv/.tex     non-LLM systems on all 12,722 clean comments
         results/tables/T2_per_fold.csv            their precision, recall and F1 in each fold
@@ -18,6 +18,8 @@ Writes: results/tables/T1_data.csv/.tex           dataset statistics, raw vs cle
         results/tables/T7_encoder_runs.csv/.tex   learning-rate search and training details (appendix)
         results/tables/T8_llm_runs.csv/.tex       LLM run statistics (appendix)
         results/tables/T9_confusion.csv/.tex      confusion matrices, best system per family (appendix)
+        results/tables/T10_error_categories.csv/.tex  error categories per system (once the coding is complete)
+        results/tables/T11_error_agreement.csv    self-agreement on the recoded errors (once recoded)
         results/figures/F1_subset.pdf/.png        F1 with 95% CI, all systems on the subset
         results/figures/F2_leakage.pdf/.png       RQ1 bar chart
         results/RESULTS_SUMMARY.md                the key numbers in plain sentences
@@ -37,11 +39,12 @@ matplotlib.use("Agg")    # write files only, no window
 import matplotlib.pyplot as plt
 import pandas as pd
 
-from config import LLM_EVAL_IDS, PREDS_DIR, RESULTS_DIR
+from config import ERROR_CATEGORIES, ERROR_CODING, ERROR_RECODE, LLM_EVAL_IDS, PREDS_DIR, RESULTS_DIR
 from evaluate import (
     N_RESAMPLES,
     bootstrap_f1_ci,
     classification_scores,
+    coding_agreement,
     confusion_counts,
     false_positive_rate,
     filter_to_ids,
@@ -94,6 +97,13 @@ JARGON_WORDS = ["kill", "killed", "kills", "die", "dies", "dead", "abort", "fata
 JARGON = re.compile(r"\b(?:" + "|".join(JARGON_WORDS) + r")\b", re.IGNORECASE)
 FEW_JARGON = 100    # below this many comments a jargon rate is only indicative
 BORDERLINE = 0.002  # an interval end this close to 0 is reported as borderline
+
+# ToxiCR's own error analysis (Sarker et al. 2023, Section 5.6): share of their BERT model's false positives
+# and false negatives in each category, on the original (not deduplicated) data. None = not given in the paper.
+TOXICR_SHARES = {"General error": (0.45, 0.46), "SE domain word": (0.40, 0.43), "Self-deprecation": (0.13, 0.11),
+                 "Bad acronym": (0.02, None), "Confounding context": (0.0026, 0.0104)}
+TOXICR_ERRORS = {"FP": 373, "FN": 483}
+CATEGORY_SHORT = dict(zip(ERROR_CATEGORIES, ["GE", "SE", "SD", "BA", "CC", "DM", "QL"]))
 
 
 def has_jargon(text):
@@ -277,6 +287,65 @@ def confusion_table(t2, t3):
     return pd.DataFrame(rows)
 
 
+def error_analysis_systems(t2, t3):
+    """The systems whose errors are coded by hand: the best fine-tuned encoder, the better Detoxify model and
+    the best LLM condition. Uses the same choices as the comparisons and the confusion table."""
+    return [best(t2, keys_in(CLASSIC) + keys_in(MODERN)), best(t2, keys_in(OFF_THE_SHELF)),
+            best_of_family(LLM, t2, t3)]
+
+
+def read_coding(path, sheet="coding"):
+    """One sheet of a coding workbook, with the category text tidied (None if the file does not exist)."""
+    if not path.exists():
+        return None
+    table = pd.read_excel(path, sheet_name=sheet)
+    if "category" in table.columns:
+        table["category"] = table["category"].map(lambda c: c.strip() if isinstance(c, str) and c.strip() else None)
+        unknown = set(table["category"].dropna()) - set(ERROR_CATEGORIES)
+        if unknown:
+            raise ValueError(f"{path.name}, sheet {sheet}: unknown categories {sorted(unknown)}")
+    return table
+
+
+def error_category_table(coding, key, systems):
+    """T10: count and share of each category, per system and error type, next to ToxiCR's BERT shares."""
+    if set(key["system"]) != set(systems):
+        raise ValueError(f"The coding sheet was sampled for {sorted(set(key['system']))}, but the best systems "
+                         f"are now {systems}")
+    merged = key.merge(coding[["row", "category"]], on="row")
+    rows = []
+    for system in systems:
+        for position, error_type in enumerate(["FP", "FN"]):
+            part = merged[(merged["system"] == system) & (merged["error_type"] == error_type)]
+            for category in ERROR_CATEGORIES:
+                count = int((part["category"] == category).sum())
+                rows.append({"system": system, "name": BY_KEY[system].name, "error_type": error_type,
+                             "category": category, "n": len(part), "count": count, "share": count / len(part),
+                             "toxicr_bert_share": TOXICR_SHARES.get(category, (None, None))[position]})
+    return pd.DataFrame(rows)
+
+
+def error_analysis_tables(systems, coding_path=ERROR_CODING, recode_path=ERROR_RECODE):
+    """T10 and T11 when the hand coding is complete, plus notes on what is still missing (None for a missing
+    table). The tables are skipped, not failed, so the rest of the results can always be built."""
+    coding = read_coding(coding_path)
+    if coding is None:
+        return None, None, ["error analysis not sampled yet (run src/error_analysis.py sample)"]
+    missing = int(coding["category"].isna().sum())
+    if missing:
+        return None, None, [f"error analysis: {missing} of {len(coding)} rows not coded yet, T10/T11 skipped"]
+    t10 = error_category_table(coding, read_coding(coding_path, "key"), systems)
+    recode = read_coding(recode_path)
+    if recode is None:
+        return t10, None, ["error analysis: no recode file yet (run src/error_analysis.py recode), T11 skipped"]
+    missing = int(recode["category"].isna().sum())
+    if missing:
+        return t10, None, [f"error analysis: {missing} of {len(recode)} recoded rows not coded yet, T11 skipped"]
+    pairs = recode[["row", "category"]].merge(coding[["row", "category"]], on="row", suffixes=("_second", "_first"))
+    t11 = pd.DataFrame([coding_agreement(pairs["category_first"], pairs["category_second"])])
+    return t10, t11, []
+
+
 # ---------- LaTeX ----------
 
 def tex(text):
@@ -401,6 +470,28 @@ def confusion_tex(table):
                         "comments (LLMs: on the subset)")
 
 
+def percent(share):
+    """0.24 -> 24\\%; shares below 1% keep one decimal (ToxiCR reports 0.26%)."""
+    if pd.isna(share):
+        return "--"
+    return (f"{100 * share:.1f}" if 0 < share < 0.01 else f"{100 * share:.0f}") + r"\%"
+
+
+def error_categories_tex(table):
+    rows = []
+    for (system, error_type), part in table.groupby(["system", "error_type"], sort=False):
+        rows.append([f"{tex(part['name'].iloc[0])}, {error_type} ({part['n'].iloc[0]})"]
+                    + [percent(share) for share in part["share"]])
+    for position, error_type in enumerate(["FP", "FN"]):
+        rows.append([f"ToxiCR BERT, {error_type} ({TOXICR_ERRORS[error_type]})"]
+                    + [percent(TOXICR_SHARES.get(c, (None, None))[position]) for c in ERROR_CATEGORIES])
+    legend = ", ".join(f"{short} = {name}" for name, short in CATEGORY_SHORT.items())
+    return tabular(["Errors ($n$)"] + list(CATEGORY_SHORT.values()), rows, "l" + "r" * len(ERROR_CATEGORIES),
+                   [len(rows) - 2],
+                   note=f"Share of each system's sampled errors (2,000-comment subset) per category; {legend}. "
+                        "ToxiCR: BERT on the original data, Sarker et al. (2023) Section 5.6; -- = not given")
+
+
 def save(table, stem, latex):
     TABLES_DIR.mkdir(parents=True, exist_ok=True)
     table.round(3).to_csv(TABLES_DIR / f"{stem}.csv", index=False)
@@ -480,7 +571,26 @@ def ci(row, low="f1_ci_low", high="f1_ci_high", value="f1_pooled"):
     return f"{row[value]:.3f} [{row[low]:.3f}, {row[high]:.3f}]"
 
 
-def summary_markdown(t2, t3, t4, t5, t6, t7, t8):
+def error_summary(t10, t11, notes):
+    """The error-analysis lines of the summary, or what is still missing."""
+    lines = ["## Error analysis (T10, T11)", ""]
+    notes = [f"- Not available yet: {note.removeprefix('error analysis: ')}." for note in notes]
+    if t10 is None:
+        return lines + notes + [""]
+    for (_, error_type), part in t10.groupby(["system", "error_type"], sort=False):
+        counts = ", ".join(f"{r['category']} {r['count']} ({r['share']:.0%})"
+                           for _, r in part.sort_values("count", ascending=False).iterrows() if r["count"])
+        lines.append(f"- {part['name'].iloc[0]}, {error_type} (n = {part['n'].iloc[0]}): {counts}.")
+    if t11 is None:
+        lines += notes
+    else:
+        row = t11.iloc[0]
+        lines.append(f"- Self-agreement on {row['n']} recoded errors: {row['agreement']:.0%} the same category, "
+                     f"Cohen's kappa {row['cohen_kappa']:.2f}.")
+    return lines + [""]
+
+
+def summary_markdown(t2, t3, t4, t5, t6, t7, t8, error_lines):
     """The key numbers in plain sentences. Describes, does not interpret."""
     lines = ["# Results summary", "",
              "Generated by `src/make_results.py`; all numbers come from the tables in `results/tables/`. "
@@ -536,6 +646,7 @@ def summary_markdown(t2, t3, t4, t5, t6, t7, t8):
         lines.append(f"- {row['name']}: {row['parsed']:,} parsed, {row['unparsed']} unparsed, {row['refused']} "
                      f"refused; mean latency {row['latency_mean_s']:.1f} s; {row['wall_clock_h']:.1f} h.")
     lines.append("")
+    lines += error_lines
 
     lines += ["## Unusual entries", "", "Systems with recall below 0.3 or precision below 0.6 on the subset:", ""]
     for _, row in t3[(t3["recall_pooled"] < 0.3) | (t3["precision_pooled"] < 0.6)].iterrows():
@@ -561,6 +672,7 @@ def main():
     t7 = encoder_runs_table()
     t8 = llm_runs_table()
     t9 = confusion_table(t2, t3)
+    t10, t11, error_notes = error_analysis_tables(error_analysis_systems(t2, t3))
     stats = pd.read_csv(RESULTS_DIR / "data_stats.csv")
 
     save(stats, "T1_data", data_tex(stats))
@@ -576,9 +688,13 @@ def main():
     save(t7, "T7_encoder_runs", encoder_runs_tex(t7))
     save(t8, "T8_llm_runs", llm_runs_tex(t8))
     save(t9, "T9_confusion", confusion_tex(t9))
+    if t10 is not None:
+        save(t10, "T10_error_categories", error_categories_tex(t10))
+    if t11 is not None:
+        t11.round(3).to_csv(TABLES_DIR / "T11_error_agreement.csv", index=False)
     f1_figure(t3)
     leakage_figure(t4)
-    summary = summary_markdown(t2, t3, t4, t5, t6, t7, t8)
+    summary = summary_markdown(t2, t3, t4, t5, t6, t7, t8, error_summary(t10, t11, error_notes))
     (RESULTS_DIR / "RESULTS_SUMMARY.md").write_text(summary, encoding="utf-8")
 
     print(t2[["name", "f1_pooled", "f1_ci_low", "f1_ci_high", "ap"]].round(3).to_string(index=False))
@@ -586,7 +702,10 @@ def main():
           f"({int(t5['excludes_zero'].sum())} exclude 0) | jargon comments: "
           f"{t6[t6['comment_set'] == 'clean']['jargon_non_toxic'].iloc[0]} (clean), "
           f"{t6[t6['comment_set'] == 'subset']['jargon_non_toxic'].iloc[0]} (subset)")
-    print(f"\nWrote {TABLES_DIR} (T1-T9, .csv + .tex)\n      {FIGURES_DIR} (F1_subset, F2_leakage, .pdf + .png)"
+    written = "T1-T9" + (", T10" if t10 is not None else "") + (", T11" if t11 is not None else "")
+    for note in error_notes:
+        print(f"\nNote: {note}")
+    print(f"\nWrote {TABLES_DIR} ({written}, .csv + .tex)\n      {FIGURES_DIR} (F1_subset, F2_leakage, .pdf + .png)"
           f"\n      {RESULTS_DIR / 'RESULTS_SUMMARY.md'}")
 
 

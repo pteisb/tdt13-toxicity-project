@@ -112,6 +112,16 @@ Highest pooled F1: DeBERTa-v3-base (0.844).
 - Kimi-K2.6 B: 2,000 parsed, 0 unparsed, 0 refused; mean latency 20.5 s; 2.9 h.
 - Kimi-K2.6 C: 2,000 parsed, 0 unparsed, 0 refused; mean latency 34.4 s; 4.9 h.
 
+## Error analysis (T10, T11)
+
+- DeBERTa-v3-base, FP (n = 50): Confounding context 17 (34%), General error 15 (30%), Self-deprecation 7 (14%), Questionable label 7 (14%), SE domain word 4 (8%).
+- DeBERTa-v3-base, FN (n = 50): Questionable label 27 (54%), Definition mismatch 15 (30%), General error 6 (12%), Confounding context 1 (2%), SE domain word 1 (2%).
+- Detoxify original, cal., FP (n = 25): SE domain word 14 (56%), General error 6 (24%), Self-deprecation 3 (12%), Confounding context 1 (4%), Questionable label 1 (4%).
+- Detoxify original, cal., FN (n = 25): Definition mismatch 19 (76%), Questionable label 3 (12%), Confounding context 2 (8%), Self-deprecation 1 (4%).
+- gpt-oss-120b C, FP (n = 25): General error 10 (40%), Confounding context 5 (20%), SE domain word 4 (16%), Questionable label 4 (16%), Self-deprecation 2 (8%).
+- gpt-oss-120b C, FN (n = 25): Questionable label 12 (48%), Definition mismatch 11 (44%), Self-deprecation 1 (4%), Confounding context 1 (4%).
+- Not available yet: 30 of 30 recoded rows not coded yet, T11 skipped.
+
 ## Unusual entries
 
 Systems with recall below 0.3 or precision below 0.6 on the subset:
