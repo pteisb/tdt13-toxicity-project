@@ -120,7 +120,7 @@ Highest pooled F1: DeBERTa-v3-base (0.844).
 - Detoxify original, cal., FN (n = 25): Definition mismatch 19 (76%), Questionable label 3 (12%), Confounding context 2 (8%), Self-deprecation 1 (4%).
 - gpt-oss-120b C, FP (n = 25): General error 10 (40%), Confounding context 5 (20%), SE domain word 4 (16%), Questionable label 4 (16%), Self-deprecation 2 (8%).
 - gpt-oss-120b C, FN (n = 25): Questionable label 12 (48%), Definition mismatch 11 (44%), Self-deprecation 1 (4%), Confounding context 1 (4%).
-- Not available yet: 30 of 30 recoded rows not coded yet, T11 skipped.
+- Self-agreement on 30.0 recoded errors: 77% the same category, Cohen's kappa 0.72.
 
 ## Unusual entries
 
