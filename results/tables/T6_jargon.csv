@@ -29,9 +29,9 @@ modernbert_large,ModernBERT-large,Modern encoders,subset,1615,164,0.033,0.024
 ettin_150m,Ettin-150m,Modern encoders,subset,1615,164,0.041,0.049
 ettin_400m,Ettin-400m,Modern encoders,subset,1615,164,0.04,0.037
 neobert,NeoBERT,Modern encoders,subset,1615,164,0.037,0.043
-gptoss120b_A_v1,gpt-oss-120b A,Prompted LLMs,subset,1615,164,0.054,0.067
-gptoss120b_B_v1,gpt-oss-120b B,Prompted LLMs,subset,1615,164,0.045,0.055
-gptoss120b_C_v1,gpt-oss-120b C,Prompted LLMs,subset,1615,164,0.071,0.079
-kimik26_A_v1,Kimi-K2.6 A,Prompted LLMs,subset,1615,164,0.01,0.024
-kimik26_B_v1,Kimi-K2.6 B,Prompted LLMs,subset,1615,164,0.022,0.024
-kimik26_C_v1,Kimi-K2.6 C,Prompted LLMs,subset,1615,164,0.059,0.055
+gptoss120b_A_v1,gpt-oss-120b A,Prompted decoder LLMs,subset,1615,164,0.054,0.067
+gptoss120b_B_v1,gpt-oss-120b B,Prompted decoder LLMs,subset,1615,164,0.045,0.055
+gptoss120b_C_v1,gpt-oss-120b C,Prompted decoder LLMs,subset,1615,164,0.071,0.079
+kimik26_A_v1,Kimi-K2.6 A,Prompted decoder LLMs,subset,1615,164,0.01,0.024
+kimik26_B_v1,Kimi-K2.6 B,Prompted decoder LLMs,subset,1615,164,0.022,0.024
+kimik26_C_v1,Kimi-K2.6 C,Prompted decoder LLMs,subset,1615,164,0.059,0.055

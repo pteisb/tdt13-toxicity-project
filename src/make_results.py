@@ -61,7 +61,7 @@ FIGURES_DIR = RESULTS_DIR / "figures"
 
 System = namedtuple("System", "key name family year params")
 BASELINE, OFF_THE_SHELF, CLASSIC, MODERN, LLM = (
-    "Baseline", "Off-the-shelf", "Classic encoders", "Modern encoders", "Prompted LLMs")
+    "Baseline", "Off-the-shelf", "Classic encoders", "Modern encoders", "Prompted decoder LLMs")
 FAMILIES = [BASELINE, OFF_THE_SHELF, CLASSIC, MODERN, LLM]
 # Okabe-Ito colors, in an order checked for color-vision deficiency (adjacent families stay distinct).
 FAMILY_COLORS = {BASELINE: "#D55E00", OFF_THE_SHELF: "#E69F00", CLASSIC: "#009E73", MODERN: "#0072B2",
