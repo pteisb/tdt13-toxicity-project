@@ -91,7 +91,7 @@ SYSTEMS = [
 BY_KEY = {system.key: system for system in SYSTEMS}
 NON_LLM = [system for system in SYSTEMS if system.family != LLM]
 
-# Section 5.8 of the project plan: non-toxic comments with these words test technical jargon.
+# Non-toxic comments with one of these words (whole word, any case) form the technical-jargon slice (T6).
 JARGON_WORDS = ["kill", "killed", "kills", "die", "dies", "dead", "abort", "fatal", "crash", "destroy",
                 "nuke", "bomb", "attack", "hack", "execute", "garbage", "junk"]
 JARGON = re.compile(r"\b(?:" + "|".join(JARGON_WORDS) + r")\b", re.IGNORECASE)
@@ -174,7 +174,7 @@ def leakage_table():
 
 
 def comparisons(t2, t3):
-    """The paired comparisons of Section 5.8 of the project plan: (research question, A, B, comment set).
+    """The paired comparisons reported in T5: (research question, A, B, comment set).
     Each row reports F1 of A minus F1 of B."""
     detoxify_original = best(t2, ["detoxify_original", "detoxify_original_cal"])
     detoxify_unbiased = best(t2, ["detoxify_unbiased", "detoxify_unbiased_cal"])

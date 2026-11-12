@@ -13,7 +13,7 @@ Checks:
      counts TOXIC / NON-TOXIC / unparseable answers.
 
 Reads:  data/clean_folds.csv, NTNU_API_TOKEN from .env (never printed)
-Writes: llm_raw/smoke_test.jsonl            every response (no comment text, only ids)
+Writes: llm_raw/smoke_test.jsonl            every response (the comment id, not its text; the reasoning may quote it)
         results/llm_smoke_test.txt          the printed summary
 
 Run (NTNU network or VPN):  uv run python src/llm_smoke_test.py

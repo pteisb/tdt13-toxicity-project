@@ -7,7 +7,7 @@ command again after a crash continues where it stopped. In the predictions file,
 refusals count as non-toxic (0); their numbers are printed at the end.
 
 Reads:  data/clean_folds.csv, the --ids CSV (column "id"), prompts/, NTNU_API_TOKEN from .env
-Writes: llm_raw/<system>.jsonl       every response (no comment text, only ids)
+Writes: llm_raw/<system>.jsonl       every response (the comment id, not its text; the reasoning may quote it)
         preds/<system>_clean.csv     one row per id with a final answer (prob_toxic empty)
 With --pilot the same files go to llm_raw/pilot/ and results/llm_pilot/ instead, so that pilot answers
 never mix with the real runs. <system> looks like gptoss120b_B_v1.

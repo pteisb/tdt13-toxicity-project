@@ -15,12 +15,7 @@ What the notebook does in one run:
 
 ---
 
-## A. One-time setup (about 10 minutes)
-
-### A0. Verify your phone number
-
-Kaggle only allows GPU and internet in notebooks for phone-verified accounts. Click your profile picture
-(top right) → **Settings** → **Phone verification**, and follow the steps. If it is already verified, skip this.
+## A. One-time setup
 
 ### A1. Upload the fold files as a private dataset
 
@@ -62,7 +57,7 @@ These settings are saved with the notebook and used for every run.
 
 ---
 
-## B. Smoke test (do this first, about 5-10 minutes per model)
+## B. Smoke test
 
 The smoke test trains on 500 comments for 1 epoch, fold 0 only, with the first learning rate. It
 checks that everything works before you spend GPU hours.
@@ -99,14 +94,13 @@ Smoke-test files are named `..._SMOKE_...`. You do not need to download them; ne
 
 ---
 
-## C. A real run ("commit": runs in the background, you can close the browser)
+## C. A real run
 
 1. In the configuration cell, set the values for the run from the run table below, and
    **`SMOKE_TEST = False`**.
 2. Click **Save Version** (top right).
 3. Choose **Save & Run All (Commit)**. Version name: the run name, e.g. `roberta_base clean`.
 4. Click **Save**. Kaggle starts a fresh copy of the notebook on a GPU and runs every cell.
-   You can now close the browser and turn off your computer.
 5. To check progress: open the notebook from **Code → Your Work**, click the version number next to
    the title (or the "Versions" list), and select the running version. Its log shows the printed lines.
    A commit can run for up to 12 hours.
@@ -165,22 +159,3 @@ search on fold 0, then folds 1-4), so the whole run takes about 7 times the minu
 `results/tables/T7_encoder_runs.csv`): BERT, RoBERTa, CodeBERT 4-4.6; ModernBERT-base, Ettin-150m, DeBERTa-v3-base 7-7.3;
 NeoBERT 10; Ettin-400m, ModernBERT-large 15-16; DeBERTa-v3-large 18. The smoke-test time is not a good guide (it includes
 the model download and uses only 500 comments). The weekly GPU quota (at least 30 hours) resets on Saturdays.
-
----
-
-## E. If something goes wrong
-
-| What you see | What to do |
-|---|---|
-| `No GPU found` | Settings: Accelerator → GPU T4. Then run again. |
-| Run All stops after a cell without an error (the next cell never starts) | A quirk of the interactive editor. Click the next cell and choose **Run → Run after** (or run the remaining cells one by one); finished cells do not need to run again. Commits are not affected. |
-| `clean_folds.csv not found` | The dataset is not attached: right panel → Input → + Add Input (step A3). |
-| `transformers ... is too old` | In the second code cell, remove the `#` before the `!pip install` line, run that cell, then **Restart Session** (Run menu) and Run All again. |
-| Errors while downloading the model (`Connection`, `HTTPError`, `401`) | Internet is off: Settings → Internet → On. Check the model id for typos. |
-| `Training loss became NaN/inf` | Set `FP16 = False` and run again (slower, but stable). |
-| `SentencePieceExtractor requires the protobuf library` or `tiktoken is required` (DeBERTa-v3) | Add a new code cell at the top with `!pip install -q protobuf sentencepiece`, run it, then **Restart Session** and Run All again. |
-| `CUDA out of memory` | Halve `BATCH_SIZE` and double `GRAD_ACCUM` (e.g. 32/1 → 16/2), so the effective batch stays the same. |
-| `validation F1 is 0 in every epoch` (real run, not smoke test) | The model learned nothing. Do not use the run; tell Claude Code and include the log. |
-| A run stopped half-way (timeout, crash) | The predictions file in the version's Output already contains the finished folds, and the log contains `"chosen_lr"`. Download both. Start a new version with `LR_GRID = [<chosen_lr>]` and `FOLDS_TO_RUN` = only the missing folds; then ask Claude Code to combine the two predictions files. |
-
-Any other error: copy the complete error message (the whole red box) and give it to Claude Code.
