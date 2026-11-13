@@ -28,8 +28,11 @@ labels must match exactly.
 - Seen and unseen (leaky setting only): a test comment is seen if its normalized key also appears in
   the four training folds of its split.
 - Technical-jargon slice (T6): non-toxic comments that contain one of these words as a whole word, in
-  any capitalization: kill, killed, kills, die, dies, dead, abort, fatal, crash, destroy, nuke, bomb,
-  attack, hack, execute, garbage, junk. A rate based on fewer than 100 comments is flagged as only
+  any capitalization. The words are the software engineering terms that the two ToxiCR papers name as
+  misread by toxicity detectors (Sarker et al. 2020, Sarker et al. 2023 Section 5.6), each with its
+  regular inflections: kill, die, dead, execute, garbage, dummy, junk, dirty, trash, daemon, naked, dump
+  and bug. The 2020 paper's self-deprecation words (stupid, dumb, idiot, fool, ignorant) are left out,
+  because they are not technical terms. A rate based on fewer than 100 comments is flagged as only
   indicative.
 
 ## TF-IDF and logistic regression (`src/baseline_tfidf.py`)

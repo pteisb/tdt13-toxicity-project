@@ -79,29 +79,29 @@ Highest pooled F1: DeBERTa-v3-base (0.844).
 
 ## Technical-jargon slice (T6)
 
-- On all clean comments: 1169 of 10,271 non-toxic comments contain a jargon word.
-- On the subset: 164 of 1,615 non-toxic comments contain a jargon word.
-  - TF-IDF + LR: false-positive rate 0.055 on jargon comments vs 0.064 on all non-toxic comments (subset).
-  - Detoxify original: false-positive rate 0.128 on jargon comments vs 0.032 on all non-toxic comments (subset).
-  - Detoxify original, cal.: false-positive rate 0.402 on jargon comments vs 0.140 on all non-toxic comments (subset).
-  - Detoxify unbiased: false-positive rate 0.311 on jargon comments vs 0.142 on all non-toxic comments (subset).
-  - Detoxify unbiased, cal.: false-positive rate 0.433 on jargon comments vs 0.189 on all non-toxic comments (subset).
-  - BERT-base: false-positive rate 0.024 on jargon comments vs 0.041 on all non-toxic comments (subset).
+- On all clean comments: 1561 of 10,271 non-toxic comments contain a jargon word.
+- On the subset: 237 of 1,615 non-toxic comments contain a jargon word.
+  - TF-IDF + LR: false-positive rate 0.068 on jargon comments vs 0.064 on all non-toxic comments (subset).
+  - Detoxify original: false-positive rate 0.097 on jargon comments vs 0.032 on all non-toxic comments (subset).
+  - Detoxify original, cal.: false-positive rate 0.338 on jargon comments vs 0.140 on all non-toxic comments (subset).
+  - Detoxify unbiased: false-positive rate 0.274 on jargon comments vs 0.142 on all non-toxic comments (subset).
+  - Detoxify unbiased, cal.: false-positive rate 0.380 on jargon comments vs 0.189 on all non-toxic comments (subset).
+  - BERT-base: false-positive rate 0.021 on jargon comments vs 0.041 on all non-toxic comments (subset).
   - RoBERTa-base: false-positive rate 0.030 on jargon comments vs 0.040 on all non-toxic comments (subset).
-  - CodeBERT-base: false-positive rate 0.043 on jargon comments vs 0.046 on all non-toxic comments (subset).
-  - DeBERTa-v3-base: false-positive rate 0.037 on jargon comments vs 0.044 on all non-toxic comments (subset).
-  - DeBERTa-v3-large: false-positive rate 0.049 on jargon comments vs 0.044 on all non-toxic comments (subset).
-  - ModernBERT-base: false-positive rate 0.018 on jargon comments vs 0.033 on all non-toxic comments (subset).
-  - ModernBERT-large: false-positive rate 0.024 on jargon comments vs 0.033 on all non-toxic comments (subset).
-  - Ettin-150m: false-positive rate 0.049 on jargon comments vs 0.041 on all non-toxic comments (subset).
-  - Ettin-400m: false-positive rate 0.037 on jargon comments vs 0.040 on all non-toxic comments (subset).
-  - NeoBERT: false-positive rate 0.043 on jargon comments vs 0.037 on all non-toxic comments (subset).
-  - gpt-oss-120b A: false-positive rate 0.067 on jargon comments vs 0.054 on all non-toxic comments (subset).
-  - gpt-oss-120b B: false-positive rate 0.055 on jargon comments vs 0.045 on all non-toxic comments (subset).
-  - gpt-oss-120b C: false-positive rate 0.079 on jargon comments vs 0.071 on all non-toxic comments (subset).
-  - Kimi-K2.6 A: false-positive rate 0.024 on jargon comments vs 0.010 on all non-toxic comments (subset).
-  - Kimi-K2.6 B: false-positive rate 0.024 on jargon comments vs 0.022 on all non-toxic comments (subset).
-  - Kimi-K2.6 C: false-positive rate 0.055 on jargon comments vs 0.059 on all non-toxic comments (subset).
+  - CodeBERT-base: false-positive rate 0.025 on jargon comments vs 0.046 on all non-toxic comments (subset).
+  - DeBERTa-v3-base: false-positive rate 0.017 on jargon comments vs 0.044 on all non-toxic comments (subset).
+  - DeBERTa-v3-large: false-positive rate 0.021 on jargon comments vs 0.044 on all non-toxic comments (subset).
+  - ModernBERT-base: false-positive rate 0.013 on jargon comments vs 0.033 on all non-toxic comments (subset).
+  - ModernBERT-large: false-positive rate 0.013 on jargon comments vs 0.033 on all non-toxic comments (subset).
+  - Ettin-150m: false-positive rate 0.030 on jargon comments vs 0.041 on all non-toxic comments (subset).
+  - Ettin-400m: false-positive rate 0.017 on jargon comments vs 0.040 on all non-toxic comments (subset).
+  - NeoBERT: false-positive rate 0.017 on jargon comments vs 0.037 on all non-toxic comments (subset).
+  - gpt-oss-120b A: false-positive rate 0.059 on jargon comments vs 0.054 on all non-toxic comments (subset).
+  - gpt-oss-120b B: false-positive rate 0.042 on jargon comments vs 0.045 on all non-toxic comments (subset).
+  - gpt-oss-120b C: false-positive rate 0.076 on jargon comments vs 0.071 on all non-toxic comments (subset).
+  - Kimi-K2.6 A: false-positive rate 0.017 on jargon comments vs 0.010 on all non-toxic comments (subset).
+  - Kimi-K2.6 B: false-positive rate 0.021 on jargon comments vs 0.022 on all non-toxic comments (subset).
+  - Kimi-K2.6 C: false-positive rate 0.051 on jargon comments vs 0.059 on all non-toxic comments (subset).
 
 ## LLM runs (T8)
 

@@ -92,8 +92,26 @@ BY_KEY = {system.key: system for system in SYSTEMS}
 NON_LLM = [system for system in SYSTEMS if system.family != LLM]
 
 # Non-toxic comments with one of these words (whole word, any case) form the technical-jargon slice (T6).
-JARGON_WORDS = ["kill", "killed", "kills", "die", "dies", "dead", "abort", "fatal", "crash", "destroy",
-                "nuke", "bomb", "attack", "hack", "execute", "garbage", "junk"]
+# The words are the software engineering terms that the two ToxiCR papers name as misread by toxicity
+# detectors: Sarker et al. 2020 (benchmark study, list of misclassified SE words) and Sarker et al. 2023
+# (Section 5.6: die, dead, kill, junk, bug). The self-deprecation words in the 2020 list (stupid, dumb, idiot,
+# fool, ignorant) are left out: they are not technical terms, and the rubric has its own rule for them.
+# Each word is listed with its regular inflections (-s, -ed, -ing, plural).
+JARGON_WORDS = [
+    "kill", "kills", "killed", "killing",
+    "execute", "executes", "executed", "executing",
+    "die", "dies", "died", "dying",
+    "dead",
+    "garbage",
+    "dummy", "dummies",
+    "junk",
+    "dirty",
+    "trash", "trashes", "trashed", "trashing",
+    "daemon", "daemons",
+    "naked",
+    "dump", "dumps", "dumped", "dumping",
+    "bug", "bugs",
+]
 JARGON = re.compile(r"\b(?:" + "|".join(JARGON_WORDS) + r")\b", re.IGNORECASE)
 FEW_JARGON = 100    # below this many comments a jargon rate is only indicative
 BORDERLINE = 0.002  # an interval end this close to 0 is reported as borderline

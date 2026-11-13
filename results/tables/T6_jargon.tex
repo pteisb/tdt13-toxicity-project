@@ -1,32 +1,32 @@
 % False-positive rate on non-toxic comments (number of comments in brackets); LLMs only ran on the subset
 \begin{tabular}{lcccc}
 \toprule
-System & All, clean (10,271) & Jargon, clean (1,169) & All, subset (1,615) & Jargon, subset (164) \\
+System & All, clean (10,271) & Jargon, clean (1,561) & All, subset (1,615) & Jargon, subset (237) \\
 \midrule
-TF-IDF + LR & 0.065 & 0.041 & 0.064 & 0.055 \\
+TF-IDF + LR & 0.065 & 0.037 & 0.064 & 0.068 \\
 \midrule
-Detoxify original & 0.040 & 0.186 & 0.032 & 0.128 \\
-Detoxify original, cal. & 0.151 & 0.472 & 0.140 & 0.402 \\
-Detoxify unbiased & 0.135 & 0.361 & 0.142 & 0.311 \\
-Detoxify unbiased, cal. & 0.188 & 0.482 & 0.189 & 0.433 \\
+Detoxify original & 0.040 & 0.144 & 0.032 & 0.097 \\
+Detoxify original, cal. & 0.151 & 0.387 & 0.140 & 0.338 \\
+Detoxify unbiased & 0.135 & 0.299 & 0.142 & 0.274 \\
+Detoxify unbiased, cal. & 0.188 & 0.409 & 0.189 & 0.380 \\
 \midrule
-BERT-base & 0.039 & 0.023 & 0.041 & 0.024 \\
-RoBERTa-base & 0.037 & 0.028 & 0.040 & 0.030 \\
-CodeBERT-base & 0.042 & 0.027 & 0.046 & 0.043 \\
-DeBERTa-v3-base & 0.038 & 0.020 & 0.044 & 0.037 \\
-DeBERTa-v3-large & 0.039 & 0.031 & 0.044 & 0.049 \\
+BERT-base & 0.039 & 0.019 & 0.041 & 0.021 \\
+RoBERTa-base & 0.037 & 0.021 & 0.040 & 0.030 \\
+CodeBERT-base & 0.042 & 0.021 & 0.046 & 0.025 \\
+DeBERTa-v3-base & 0.038 & 0.017 & 0.044 & 0.017 \\
+DeBERTa-v3-large & 0.039 & 0.024 & 0.044 & 0.021 \\
 \midrule
-ModernBERT-base & 0.037 & 0.027 & 0.033 & 0.018 \\
-ModernBERT-large & 0.032 & 0.025 & 0.033 & 0.024 \\
-Ettin-150m & 0.040 & 0.036 & 0.041 & 0.049 \\
-Ettin-400m & 0.033 & 0.023 & 0.040 & 0.037 \\
-NeoBERT & 0.033 & 0.018 & 0.037 & 0.043 \\
+ModernBERT-base & 0.037 & 0.020 & 0.033 & 0.013 \\
+ModernBERT-large & 0.032 & 0.017 & 0.033 & 0.013 \\
+Ettin-150m & 0.040 & 0.026 & 0.041 & 0.030 \\
+Ettin-400m & 0.033 & 0.015 & 0.040 & 0.017 \\
+NeoBERT & 0.033 & 0.015 & 0.037 & 0.017 \\
 \midrule
-gpt-oss-120b A & -- & -- & 0.054 & 0.067 \\
-gpt-oss-120b B & -- & -- & 0.045 & 0.055 \\
-gpt-oss-120b C & -- & -- & 0.071 & 0.079 \\
-Kimi-K2.6 A & -- & -- & 0.010 & 0.024 \\
-Kimi-K2.6 B & -- & -- & 0.022 & 0.024 \\
-Kimi-K2.6 C & -- & -- & 0.059 & 0.055 \\
+gpt-oss-120b A & -- & -- & 0.054 & 0.059 \\
+gpt-oss-120b B & -- & -- & 0.045 & 0.042 \\
+gpt-oss-120b C & -- & -- & 0.071 & 0.076 \\
+Kimi-K2.6 A & -- & -- & 0.010 & 0.017 \\
+Kimi-K2.6 B & -- & -- & 0.022 & 0.021 \\
+Kimi-K2.6 C & -- & -- & 0.059 & 0.051 \\
 \bottomrule
 \end{tabular}

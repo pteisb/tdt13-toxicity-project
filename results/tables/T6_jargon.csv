@@ -1,37 +1,37 @@
 system,name,family,comment_set,non_toxic,jargon_non_toxic,fpr_all,fpr_jargon
-tfidf_lr,TF-IDF + LR,Baseline,clean,10271,1169,0.065,0.041
-detoxify_original,Detoxify original,Off-the-shelf,clean,10271,1169,0.04,0.186
-detoxify_original_cal,"Detoxify original, cal.",Off-the-shelf,clean,10271,1169,0.151,0.472
-detoxify_unbiased,Detoxify unbiased,Off-the-shelf,clean,10271,1169,0.135,0.361
-detoxify_unbiased_cal,"Detoxify unbiased, cal.",Off-the-shelf,clean,10271,1169,0.188,0.482
-bert_base,BERT-base,Classic encoders,clean,10271,1169,0.039,0.023
-roberta_base,RoBERTa-base,Classic encoders,clean,10271,1169,0.037,0.028
-codebert_base,CodeBERT-base,Classic encoders,clean,10271,1169,0.042,0.027
-deberta_v3_base,DeBERTa-v3-base,Classic encoders,clean,10271,1169,0.038,0.02
-deberta_v3_large,DeBERTa-v3-large,Classic encoders,clean,10271,1169,0.039,0.031
-modernbert_base,ModernBERT-base,Modern encoders,clean,10271,1169,0.037,0.027
-modernbert_large,ModernBERT-large,Modern encoders,clean,10271,1169,0.032,0.025
-ettin_150m,Ettin-150m,Modern encoders,clean,10271,1169,0.04,0.036
-ettin_400m,Ettin-400m,Modern encoders,clean,10271,1169,0.033,0.023
-neobert,NeoBERT,Modern encoders,clean,10271,1169,0.033,0.018
-tfidf_lr,TF-IDF + LR,Baseline,subset,1615,164,0.064,0.055
-detoxify_original,Detoxify original,Off-the-shelf,subset,1615,164,0.032,0.128
-detoxify_original_cal,"Detoxify original, cal.",Off-the-shelf,subset,1615,164,0.14,0.402
-detoxify_unbiased,Detoxify unbiased,Off-the-shelf,subset,1615,164,0.142,0.311
-detoxify_unbiased_cal,"Detoxify unbiased, cal.",Off-the-shelf,subset,1615,164,0.189,0.433
-bert_base,BERT-base,Classic encoders,subset,1615,164,0.041,0.024
-roberta_base,RoBERTa-base,Classic encoders,subset,1615,164,0.04,0.03
-codebert_base,CodeBERT-base,Classic encoders,subset,1615,164,0.046,0.043
-deberta_v3_base,DeBERTa-v3-base,Classic encoders,subset,1615,164,0.044,0.037
-deberta_v3_large,DeBERTa-v3-large,Classic encoders,subset,1615,164,0.044,0.049
-modernbert_base,ModernBERT-base,Modern encoders,subset,1615,164,0.033,0.018
-modernbert_large,ModernBERT-large,Modern encoders,subset,1615,164,0.033,0.024
-ettin_150m,Ettin-150m,Modern encoders,subset,1615,164,0.041,0.049
-ettin_400m,Ettin-400m,Modern encoders,subset,1615,164,0.04,0.037
-neobert,NeoBERT,Modern encoders,subset,1615,164,0.037,0.043
-gptoss120b_A_v1,gpt-oss-120b A,Prompted decoder LLMs,subset,1615,164,0.054,0.067
-gptoss120b_B_v1,gpt-oss-120b B,Prompted decoder LLMs,subset,1615,164,0.045,0.055
-gptoss120b_C_v1,gpt-oss-120b C,Prompted decoder LLMs,subset,1615,164,0.071,0.079
-kimik26_A_v1,Kimi-K2.6 A,Prompted decoder LLMs,subset,1615,164,0.01,0.024
-kimik26_B_v1,Kimi-K2.6 B,Prompted decoder LLMs,subset,1615,164,0.022,0.024
-kimik26_C_v1,Kimi-K2.6 C,Prompted decoder LLMs,subset,1615,164,0.059,0.055
+tfidf_lr,TF-IDF + LR,Baseline,clean,10271,1561,0.065,0.037
+detoxify_original,Detoxify original,Off-the-shelf,clean,10271,1561,0.04,0.144
+detoxify_original_cal,"Detoxify original, cal.",Off-the-shelf,clean,10271,1561,0.151,0.387
+detoxify_unbiased,Detoxify unbiased,Off-the-shelf,clean,10271,1561,0.135,0.299
+detoxify_unbiased_cal,"Detoxify unbiased, cal.",Off-the-shelf,clean,10271,1561,0.188,0.409
+bert_base,BERT-base,Classic encoders,clean,10271,1561,0.039,0.019
+roberta_base,RoBERTa-base,Classic encoders,clean,10271,1561,0.037,0.021
+codebert_base,CodeBERT-base,Classic encoders,clean,10271,1561,0.042,0.021
+deberta_v3_base,DeBERTa-v3-base,Classic encoders,clean,10271,1561,0.038,0.017
+deberta_v3_large,DeBERTa-v3-large,Classic encoders,clean,10271,1561,0.039,0.024
+modernbert_base,ModernBERT-base,Modern encoders,clean,10271,1561,0.037,0.02
+modernbert_large,ModernBERT-large,Modern encoders,clean,10271,1561,0.032,0.017
+ettin_150m,Ettin-150m,Modern encoders,clean,10271,1561,0.04,0.026
+ettin_400m,Ettin-400m,Modern encoders,clean,10271,1561,0.033,0.015
+neobert,NeoBERT,Modern encoders,clean,10271,1561,0.033,0.015
+tfidf_lr,TF-IDF + LR,Baseline,subset,1615,237,0.064,0.068
+detoxify_original,Detoxify original,Off-the-shelf,subset,1615,237,0.032,0.097
+detoxify_original_cal,"Detoxify original, cal.",Off-the-shelf,subset,1615,237,0.14,0.338
+detoxify_unbiased,Detoxify unbiased,Off-the-shelf,subset,1615,237,0.142,0.274
+detoxify_unbiased_cal,"Detoxify unbiased, cal.",Off-the-shelf,subset,1615,237,0.189,0.38
+bert_base,BERT-base,Classic encoders,subset,1615,237,0.041,0.021
+roberta_base,RoBERTa-base,Classic encoders,subset,1615,237,0.04,0.03
+codebert_base,CodeBERT-base,Classic encoders,subset,1615,237,0.046,0.025
+deberta_v3_base,DeBERTa-v3-base,Classic encoders,subset,1615,237,0.044,0.017
+deberta_v3_large,DeBERTa-v3-large,Classic encoders,subset,1615,237,0.044,0.021
+modernbert_base,ModernBERT-base,Modern encoders,subset,1615,237,0.033,0.013
+modernbert_large,ModernBERT-large,Modern encoders,subset,1615,237,0.033,0.013
+ettin_150m,Ettin-150m,Modern encoders,subset,1615,237,0.041,0.03
+ettin_400m,Ettin-400m,Modern encoders,subset,1615,237,0.04,0.017
+neobert,NeoBERT,Modern encoders,subset,1615,237,0.037,0.017
+gptoss120b_A_v1,gpt-oss-120b A,Prompted decoder LLMs,subset,1615,237,0.054,0.059
+gptoss120b_B_v1,gpt-oss-120b B,Prompted decoder LLMs,subset,1615,237,0.045,0.042
+gptoss120b_C_v1,gpt-oss-120b C,Prompted decoder LLMs,subset,1615,237,0.071,0.076
+kimik26_A_v1,Kimi-K2.6 A,Prompted decoder LLMs,subset,1615,237,0.01,0.017
+kimik26_B_v1,Kimi-K2.6 B,Prompted decoder LLMs,subset,1615,237,0.022,0.021
+kimik26_C_v1,Kimi-K2.6 C,Prompted decoder LLMs,subset,1615,237,0.059,0.051

@@ -10,17 +10,18 @@ from config import PREDS_DIR
 
 
 @pytest.mark.parametrize("text", [
-    "kill the process", "Kill it", "the thread DIES here", "dead code", "dead-code", "abort();",
-    "fatal error", "this will crash", "nuke the cache", "remove this garbage", "junk", "a hack.",
-    "execute the query", "(attack surface)", "it killed the build",
+    "kill the process", "Kill it", "the thread DIES here", "dead code", "dead-code", "it killed the build",
+    "killing the worker", "execute the query", "executed twice", "the child died", "remove this garbage",
+    "an empty dummy file", "junk data", "the dirty bit", "just trash it", "restart the daemon",
+    "naked pointers", "json.dump(x)", "core dumped", "open a bug", "fixes two bugs",
 ])
 def test_jargon_words_are_found(text):
     assert make_results.has_jargon(text)
 
 
 @pytest.mark.parametrize("text", [
-    "skill", "killer feature", "diesel", "deadline", "aborted", "crashed", "hackathon", "executed",
-    "junkyard", "bombastic", "", None,
+    "skill", "killer feature", "killall", "diesel", "deadline", "deadlock", "executor", "junkyard",
+    "dumpster", "debug", "buggy", "daemonize", "trashcan", "abort", "crash", "", None,
 ])
 def test_only_whole_words_count(text):
     assert not make_results.has_jargon(text)
